@@ -39,6 +39,7 @@
             this.button_Save = new System.Windows.Forms.Button();
             this.button_Clear = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.columnHeader_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // textBox_NoteTitle
@@ -52,7 +53,8 @@
             // 
             this.listView_Note.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader_Title,
-            this.columnHeader_NoteDate});
+            this.columnHeader_NoteDate,
+            this.columnHeader_ID});
             this.listView_Note.GridLines = true;
             this.listView_Note.Location = new System.Drawing.Point(272, 25);
             this.listView_Note.Name = "listView_Note";
@@ -135,6 +137,11 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "Note List";
             // 
+            // columnHeader_ID
+            // 
+            this.columnHeader_ID.Text = "ID";
+            this.columnHeader_ID.Width = 0;
+            // 
             // Form_Note
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -170,5 +177,6 @@
         private System.Windows.Forms.Button button_Save;
         private System.Windows.Forms.Button button_Clear;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ColumnHeader columnHeader_ID;
     }
 }

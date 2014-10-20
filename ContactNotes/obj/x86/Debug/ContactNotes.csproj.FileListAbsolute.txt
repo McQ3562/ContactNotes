@@ -1,0 +1,11 @@
+C:\Users\McQ\Documents\GitHub\ContactNotes\ContactNotes\bin\Debug\ContactNotes.exe
+C:\Users\McQ\Documents\GitHub\ContactNotes\ContactNotes\bin\Debug\ContactNotes.pdb
+C:\Users\McQ\Documents\GitHub\ContactNotes\ContactNotes\obj\x86\Debug\ContactNotes.Form_Contact.resources
+C:\Users\McQ\Documents\GitHub\ContactNotes\ContactNotes\obj\x86\Debug\ContactNotes.Form_Main.resources
+C:\Users\McQ\Documents\GitHub\ContactNotes\ContactNotes\obj\x86\Debug\ContactNotes.Form_Note.resources
+C:\Users\McQ\Documents\GitHub\ContactNotes\ContactNotes\obj\x86\Debug\ContactNotes.Properties.Resources.resources
+C:\Users\McQ\Documents\GitHub\ContactNotes\ContactNotes\obj\x86\Debug\ContactNotes.csproj.GenerateResource.Cache
+C:\Users\McQ\Documents\GitHub\ContactNotes\ContactNotes\obj\x86\Debug\ContactNotes.exe
+C:\Users\McQ\Documents\GitHub\ContactNotes\ContactNotes\obj\x86\Debug\ContactNotes.pdb
+C:\Users\McQ\Documents\GitHub\ContactNotes\ContactNotes\bin\Debug\ContactNotes.exe.config
+C:\Users\McQ\Documents\GitHub\ContactNotes\ContactNotes\obj\x86\Debug\ContactNotes.csprojResolveAssemblyReference.cache

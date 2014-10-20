@@ -12,6 +12,7 @@ namespace ContactNotes
     public partial class Form_Note : Form
     {
         Note currentNote;
+        NoteManager noteManager;
         List<Note> noteList = new List<Note>();
 
         public Form_Note()
@@ -41,9 +42,7 @@ namespace ContactNotes
 
         public void LoadNoteList()
         {
-
+            
         }
-
-
     }
 }

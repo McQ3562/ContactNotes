@@ -12,6 +12,7 @@ namespace ContactNotes
     public partial class Form_Main : Form
     {
         Note currentNote;
+        NoteManager currentNoteManager = new NoteManager();
 
         public Form_Main()
         {
@@ -41,5 +42,10 @@ namespace ContactNotes
             tmpContact.ShowDialog();
         }
 
+        private void Form_Main_Load(object sender, EventArgs e)
+        {
+            currentNoteManager.GetNoteList();
+            currentNoteManager.PopulateNoteList(listView_NoteList);
+        }
     }
 }

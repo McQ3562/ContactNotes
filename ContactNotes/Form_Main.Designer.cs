@@ -31,6 +31,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox_Contact = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
@@ -62,12 +67,8 @@
             this.columnHeader_Title = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader_Date = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.button_OpenContact = new System.Windows.Forms.Button();
+            this.columnHeader_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox_Contact.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -121,6 +122,46 @@
             this.groupBox_Contact.TabIndex = 2;
             this.groupBox_Contact.TabStop = false;
             this.groupBox_Contact.Text = "Contact";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(257, 97);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(63, 13);
+            this.label11.TabIndex = 21;
+            this.label11.Text = "Status Date";
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(260, 113);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(118, 20);
+            this.textBox7.TabIndex = 20;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(158, 55);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(65, 13);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "Phone Type";
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(161, 71);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(121, 21);
+            this.comboBox4.TabIndex = 18;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(6, 71);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(149, 20);
+            this.textBox6.TabIndex = 17;
             // 
             // label9
             // 
@@ -364,7 +405,8 @@
             // 
             this.listView_NoteList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader_Title,
-            this.columnHeader_Date});
+            this.columnHeader_Date,
+            this.columnHeader_ID});
             this.listView_NoteList.GridLines = true;
             this.listView_NoteList.Location = new System.Drawing.Point(6, 19);
             this.listView_NoteList.Name = "listView_NoteList";
@@ -393,46 +435,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Notes";
             // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(6, 71);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(149, 20);
-            this.textBox6.TabIndex = 17;
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(161, 71);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(121, 21);
-            this.comboBox4.TabIndex = 18;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(158, 55);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(65, 13);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "Phone Type";
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(260, 113);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(118, 20);
-            this.textBox7.TabIndex = 20;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(257, 97);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(63, 13);
-            this.label11.TabIndex = 21;
-            this.label11.Text = "Status Date";
-            // 
             // button_OpenContact
             // 
             this.button_OpenContact.Location = new System.Drawing.Point(396, 507);
@@ -442,6 +444,11 @@
             this.button_OpenContact.Text = "Open Contact";
             this.button_OpenContact.UseVisualStyleBackColor = true;
             this.button_OpenContact.Click += new System.EventHandler(this.button_OpenContact_Click);
+            // 
+            // columnHeader_ID
+            // 
+            this.columnHeader_ID.Text = "ID";
+            this.columnHeader_ID.Width = 0;
             // 
             // Form_Main
             // 
@@ -457,6 +464,7 @@
             this.Controls.Add(this.groupBox_Contact);
             this.Name = "Form_Main";
             this.Text = "Contact Notes";
+            this.Load += new System.EventHandler(this.Form_Main_Load);
             this.groupBox_Contact.ResumeLayout(false);
             this.groupBox_Contact.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -508,6 +516,7 @@
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Button button_OpenContact;
+        private System.Windows.Forms.ColumnHeader columnHeader_ID;
     }
 }
 
