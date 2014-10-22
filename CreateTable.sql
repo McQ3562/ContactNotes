@@ -18,7 +18,7 @@ IF(EXISTS(SELECT 1 FROM sys.tables WHERE name='Contacts'))
 	DROP TABLE Contacts
 GO
 CREATE TABLE Contacts (
-	ContactID INT PRIMARY KEY,
+	ContactID INT IDENTITY(1,1) PRIMARY KEY,
 	FirstName VARCHAR(500),
 	LastName VARCHAR(500),
 	Gender VARCHAR(10),
@@ -31,14 +31,15 @@ CREATE TABLE Contacts (
 	ReferalWho VARCHAR(100),
 	DirectSalesWebsite VARCHAR(1),
 	Other VARCHAR(1),
-	OtherWhere VARCHAR(100)
+	OtherWhere VARCHAR(100),
+	IsActive VARCHAR(10)
 )
 GO
 IF(EXISTS(SELECT 1 FROM sys.tables WHERE name='ContactAddress'))
 	DROP TABLE ContactAddress
 GO
 CREATE TABLE ContactAddress (
-	ContactAddressID INT PRIMARY KEY,
+	ContactAddressID INT IDENTITY(1,1) PRIMARY KEY,
 	ContactID INT,
 	ContactAddress VARCHAR(500),
 	ContactCity VARCHAR(100),
@@ -50,9 +51,23 @@ IF(EXISTS(SELECT 1 FROM sys.tables WHERE name='ContactPhone'))
 	DROP TABLE ContactPhone
 GO
 CREATE TABLE ContactPhone (
-	ContactPhoneID INT PRIMARY KEY,
+	ContactPhoneID INT IDENTITY(1,1) PRIMARY KEY,
 	ContactID INT,
 	ContactPhoneNumber VARCHAR(20),
 	ContactPhoneTypeID INT,
 )
+GO
+IF(EXISTS(SELECT 1 FROM sys.tables WHERE name='lk_PhoneType'))
+	DROP TABLE lk_PhoneType
+GO
+CREATE TABLE lk_PhoneType (
+	PhoneTypeID INT,
+	PhoneTypeName VARCHAR(50)
+)
+GO
+
+INSERT INTO lk_PhoneType (PhoneTypeID, PhoneTypeName) VALUES (1, 'Cell')
+INSERT INTO lk_PhoneType (PhoneTypeID, PhoneTypeName) VALUES (2, 'Home')
+INSERT INTO lk_PhoneType (PhoneTypeID, PhoneTypeName) VALUES (3, 'Office')
+INSERT INTO lk_PhoneType (PhoneTypeID, PhoneTypeName) VALUES (4, 'Other')
 GO

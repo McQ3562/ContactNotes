@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contact.cs" />
+    <Compile Include="ContactManager.cs" />
     <Compile Include="DB_Connection.cs" />
     <Compile Include="Form_Contact.cs">
       <SubType>Form</SubType>

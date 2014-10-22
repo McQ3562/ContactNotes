@@ -66,9 +66,10 @@
             this.listView_NoteList = new System.Windows.Forms.ListView();
             this.columnHeader_Title = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader_Date = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button_OpenContact = new System.Windows.Forms.Button();
-            this.columnHeader_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader_ContactID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox_Contact.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -304,7 +305,8 @@
             // 
             this.listView_CustomerList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader_FirstName,
-            this.columnHeader_LastName});
+            this.columnHeader_LastName,
+            this.columnHeader_ContactID});
             this.listView_CustomerList.GridLines = true;
             this.listView_CustomerList.Location = new System.Drawing.Point(6, 68);
             this.listView_CustomerList.Name = "listView_CustomerList";
@@ -312,6 +314,7 @@
             this.listView_CustomerList.TabIndex = 5;
             this.listView_CustomerList.UseCompatibleStateImageBehavior = false;
             this.listView_CustomerList.View = System.Windows.Forms.View.Details;
+            this.listView_CustomerList.SelectedIndexChanged += new System.EventHandler(this.listView_CustomerList_SelectedIndexChanged);
             // 
             // columnHeader_FirstName
             // 
@@ -425,6 +428,11 @@
             this.columnHeader_Date.Text = "Date";
             this.columnHeader_Date.Width = 93;
             // 
+            // columnHeader_ID
+            // 
+            this.columnHeader_ID.Text = "ID";
+            this.columnHeader_ID.Width = 0;
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.listView_NoteList);
@@ -445,10 +453,10 @@
             this.button_OpenContact.UseVisualStyleBackColor = true;
             this.button_OpenContact.Click += new System.EventHandler(this.button_OpenContact_Click);
             // 
-            // columnHeader_ID
+            // columnHeader_ContactID
             // 
-            this.columnHeader_ID.Text = "ID";
-            this.columnHeader_ID.Width = 0;
+            this.columnHeader_ContactID.Text = "ID";
+            this.columnHeader_ContactID.Width = 0;
             // 
             // Form_Main
             // 
@@ -517,6 +525,7 @@
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Button button_OpenContact;
         private System.Windows.Forms.ColumnHeader columnHeader_ID;
+        private System.Windows.Forms.ColumnHeader columnHeader_ContactID;
     }
 }
 

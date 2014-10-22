@@ -11,7 +11,8 @@ namespace ContactNotes
 {
     public partial class Form_Main : Form
     {
-        Note currentNote;
+        Contact currentContact;
+        ContactManager currentContactManager = new ContactManager();
         NoteManager currentNoteManager = new NoteManager();
 
         public Form_Main()
@@ -43,6 +44,14 @@ namespace ContactNotes
         }
 
         private void Form_Main_Load(object sender, EventArgs e)
+        {
+            currentContactManager.GetContactList();
+            currentContactManager.PopulateContactList(listView_CustomerList);
+
+
+        }
+
+        private void listView_CustomerList_SelectedIndexChanged(object sender, EventArgs e)
         {
             currentNoteManager.GetNoteList();
             currentNoteManager.PopulateNoteList(listView_NoteList);
