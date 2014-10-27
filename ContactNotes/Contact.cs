@@ -12,6 +12,8 @@ namespace ContactNotes
 	    string lastName;
 	    string gender;
 	    DateTime birthDate;
+        string status;
+        string potentual;
 	    bool virtualParty = false;
 	    string virtualPartyWho;
 	    bool inPerson = false;
@@ -28,6 +30,8 @@ namespace ContactNotes
         public string LastName { get { return lastName; } set { lastName = value; } }
         public string Gender { get { return gender; } set { gender = value; } }
         public DateTime BirthDate { get { return birthDate; } set { birthDate = value; } }
+        public string Status { get{return status;} set {status = value;} }
+        public string Potentual { get { return potentual; } set { potentual = value; } }
         bool VirtualParty { get { return virtualParty; } set { virtualParty = value; } }
         public string VirtualPartyWho { get { return virtualPartyWho; } set { virtualPartyWho = value; } }
         bool InPerson { get { return inPerson; } set { inPerson = value; } }
@@ -53,6 +57,9 @@ namespace ContactNotes
                     Gender=results[3][1];
 
                     BirthDate=Convert.ToDateTime(results[4][1]);
+
+                    Status = results[5][1];
+                    Potentual = results[6][1];
 
                     if (results[5][1] == "Y")
                         VirtualParty = true;

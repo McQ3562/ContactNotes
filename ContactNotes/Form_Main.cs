@@ -56,5 +56,27 @@ namespace ContactNotes
             currentNoteManager.GetNoteList();
             currentNoteManager.PopulateNoteList(listView_NoteList);
         }
+
+        private void listView_CustomerList_DoubleClick(object sender, EventArgs e)
+        {
+            //currentContact = 
+            string test = listView_CustomerList.SelectedItems[0].SubItems[1].Text;
+            DisplayCurrentContact();
+        }
+
+        private void DisplayCurrentContact()
+        {
+            textBox_FirstName.Text = currentContact.FirstName;
+            textBox_LastName.Text = currentContact.LastName;
+            //textBox_PhoneNumber.Text = currentContact.
+            //comboBox_PhoneType.Text = currentContact.
+            //comboBox_Status.Text = currentContact.
+            //comboBox_Potentual.Text = currentContact.
+            //textBox_Address.Text = currentContact
+            //textBox_City.Text = currentContact
+            //comboBox_State.Text = currentContact
+            //textBox_Zipcode.Text = currentContact
+
+        }
     }
 }

@@ -57,6 +57,8 @@ CREATE PROCEDURE sp_ADD_Contact
 	@LastName VARCHAR(500),
 	@Gender VARCHAR(10),
 	@BirthDate DATETIME,
+	@StatusID VARCHAR(50),
+	@PotentualID VARCHAR(50),
 	@VirtualParty VARCHAR(1),
 	@VirtualPartyWho VARCHAR(100),
 	@InPerson VARCHAR(1),
@@ -69,8 +71,8 @@ CREATE PROCEDURE sp_ADD_Contact
 	@IsActive VARCHAR(10)
 AS
 
-INSERT INTO Contacts (FirstName, LastName, Gender, BirthDate, VirtualParty, VirtualPartyWho, InPerson, InPersonWho, Referal, ReferalWho, DirectSalesWebsite, Other, OtherWhere, IsActive)
-VALUES(@FirstName, @LastName, @Gender, @BirthDate, @VirtualParty, @VirtualPartyWho, @InPerson, @InPersonWho, @Referal, @ReferalWho, @DirectSalesWebsite, @Other, @OtherWhere, @IsActive)
+INSERT INTO Contacts (FirstName, LastName, Gender, BirthDate, StatusID, PotentualID, VirtualParty, VirtualPartyWho, InPerson, InPersonWho, Referal, ReferalWho, DirectSalesWebsite, Other, OtherWhere, IsActive)
+VALUES(@FirstName, @LastName, @Gender, @BirthDate, @StatusID, @PotentualID, @VirtualParty, @VirtualPartyWho, @InPerson, @InPersonWho, @Referal, @ReferalWho, @DirectSalesWebsite, @Other, @OtherWhere, @IsActive)
 
 SELECT SCOPE_IDENTITY()
 GO
@@ -114,6 +116,8 @@ SELECT
 	LastName,
 	Gender,
 	BirthDate,
+	StatusID,
+	PotentualID,
 	VirtualParty,
 	VirtualPartyWho,
 	InPerson,

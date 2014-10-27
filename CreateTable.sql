@@ -23,6 +23,8 @@ CREATE TABLE Contacts (
 	LastName VARCHAR(500),
 	Gender VARCHAR(10),
 	BirthDate DATETIME,
+	StatusID VARCHAR(50),
+	PotentualID VARCHAR(50),
 	VirtualParty VARCHAR(1),
 	VirtualPartyWho VARCHAR(100),
 	InPerson VARCHAR(1),
@@ -65,9 +67,36 @@ CREATE TABLE lk_PhoneType (
 	PhoneTypeName VARCHAR(50)
 )
 GO
+IF(EXISTS(SELECT 1 FROM sys.tables WHERE name='lk_Status'))
+	DROP TABLE lk_Status
+GO
+CREATE TABLE lk_Status (
+	StatusID VARCHAR(50),
+	StatusDiscription VARCHAR(500)
+)
+GO
+IF(EXISTS(SELECT 1 FROM sys.tables WHERE name='lk_Potentual'))
+	DROP TABLE lk_Potentual
+GO
+CREATE TABLE lk_Potentual (
+	PotentualID VARCHAR(50),
+	PotentualDiscription VARCHAR(500)
+)
 
 INSERT INTO lk_PhoneType (PhoneTypeID, PhoneTypeName) VALUES (1, 'Cell')
 INSERT INTO lk_PhoneType (PhoneTypeID, PhoneTypeName) VALUES (2, 'Home')
 INSERT INTO lk_PhoneType (PhoneTypeID, PhoneTypeName) VALUES (3, 'Office')
 INSERT INTO lk_PhoneType (PhoneTypeID, PhoneTypeName) VALUES (4, 'Other')
+
+INSERT INTO lk_Status (StatusID, StatusDiscription) VALUES ('Prospect', '')
+INSERT INTO lk_Status (StatusID, StatusDiscription) VALUES ('Customer', '')
+INSERT INTO lk_Status (StatusID, StatusDiscription) VALUES ('Host', '')
+INSERT INTO lk_Status (StatusID, StatusDiscription) VALUES ('Presenter', '')
+INSERT INTO lk_Status (StatusID, StatusDiscription) VALUES ('Customer / Host', '')
+INSERT INTO lk_Status (StatusID, StatusDiscription) VALUES ('Customer / Presenter', '')
+INSERT INTO lk_Status (StatusID, StatusDiscription) VALUES ('Host / Presenter', '')
+
+INSERT INTO lk_Potentual (PotentualID, PotentualDiscription) VALUES ('Yes', '')
+INSERT INTO lk_Potentual (PotentualID, PotentualDiscription) VALUES ('Maybe', '')
+INSERT INTO lk_Potentual (PotentualID, PotentualDiscription) VALUES ('No', '')
 GO

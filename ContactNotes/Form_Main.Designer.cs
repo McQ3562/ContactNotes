@@ -32,29 +32,30 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox_Contact = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox_StatusDate = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.comboBox_PhoneType = new System.Windows.Forms.ComboBox();
+            this.textBox_PhoneNumber = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox_Zipcode = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.comboBox_State = new System.Windows.Forms.ComboBox();
+            this.textBox_City = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.textBox_Address = new System.Windows.Forms.TextBox();
+            this.comboBox_Potentual = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.comboBox_Status = new System.Windows.Forms.ComboBox();
+            this.textBox_LastName = new System.Windows.Forms.TextBox();
+            this.textBox_FirstName = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.listView_CustomerList = new System.Windows.Forms.ListView();
             this.columnHeader_FirstName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader_LastName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader_ContactID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.radioButton_Both = new System.Windows.Forms.RadioButton();
             this.radioButton_Last = new System.Windows.Forms.RadioButton();
             this.radioButton_First = new System.Windows.Forms.RadioButton();
@@ -69,7 +70,6 @@
             this.columnHeader_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button_OpenContact = new System.Windows.Forms.Button();
-            this.columnHeader_ContactID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox_Contact.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -96,25 +96,25 @@
             // groupBox_Contact
             // 
             this.groupBox_Contact.Controls.Add(this.label11);
-            this.groupBox_Contact.Controls.Add(this.textBox7);
+            this.groupBox_Contact.Controls.Add(this.textBox_StatusDate);
             this.groupBox_Contact.Controls.Add(this.label10);
-            this.groupBox_Contact.Controls.Add(this.comboBox4);
-            this.groupBox_Contact.Controls.Add(this.textBox6);
+            this.groupBox_Contact.Controls.Add(this.comboBox_PhoneType);
+            this.groupBox_Contact.Controls.Add(this.textBox_PhoneNumber);
             this.groupBox_Contact.Controls.Add(this.label9);
             this.groupBox_Contact.Controls.Add(this.label8);
-            this.groupBox_Contact.Controls.Add(this.textBox5);
+            this.groupBox_Contact.Controls.Add(this.textBox_Zipcode);
             this.groupBox_Contact.Controls.Add(this.label7);
-            this.groupBox_Contact.Controls.Add(this.comboBox3);
-            this.groupBox_Contact.Controls.Add(this.textBox4);
+            this.groupBox_Contact.Controls.Add(this.comboBox_State);
+            this.groupBox_Contact.Controls.Add(this.textBox_City);
             this.groupBox_Contact.Controls.Add(this.label6);
             this.groupBox_Contact.Controls.Add(this.label5);
-            this.groupBox_Contact.Controls.Add(this.textBox3);
-            this.groupBox_Contact.Controls.Add(this.comboBox2);
+            this.groupBox_Contact.Controls.Add(this.textBox_Address);
+            this.groupBox_Contact.Controls.Add(this.comboBox_Potentual);
             this.groupBox_Contact.Controls.Add(this.label4);
             this.groupBox_Contact.Controls.Add(this.label3);
-            this.groupBox_Contact.Controls.Add(this.comboBox1);
-            this.groupBox_Contact.Controls.Add(this.textBox2);
-            this.groupBox_Contact.Controls.Add(this.textBox1);
+            this.groupBox_Contact.Controls.Add(this.comboBox_Status);
+            this.groupBox_Contact.Controls.Add(this.textBox_LastName);
+            this.groupBox_Contact.Controls.Add(this.textBox_FirstName);
             this.groupBox_Contact.Controls.Add(this.label1);
             this.groupBox_Contact.Controls.Add(this.label2);
             this.groupBox_Contact.Location = new System.Drawing.Point(222, 12);
@@ -133,12 +133,12 @@
             this.label11.TabIndex = 21;
             this.label11.Text = "Status Date";
             // 
-            // textBox7
+            // textBox_StatusDate
             // 
-            this.textBox7.Location = new System.Drawing.Point(260, 113);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(118, 20);
-            this.textBox7.TabIndex = 20;
+            this.textBox_StatusDate.Location = new System.Drawing.Point(260, 113);
+            this.textBox_StatusDate.Name = "textBox_StatusDate";
+            this.textBox_StatusDate.Size = new System.Drawing.Size(118, 20);
+            this.textBox_StatusDate.TabIndex = 20;
             // 
             // label10
             // 
@@ -149,20 +149,20 @@
             this.label10.TabIndex = 19;
             this.label10.Text = "Phone Type";
             // 
-            // comboBox4
+            // comboBox_PhoneType
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(161, 71);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(121, 21);
-            this.comboBox4.TabIndex = 18;
+            this.comboBox_PhoneType.FormattingEnabled = true;
+            this.comboBox_PhoneType.Location = new System.Drawing.Point(161, 71);
+            this.comboBox_PhoneType.Name = "comboBox_PhoneType";
+            this.comboBox_PhoneType.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_PhoneType.TabIndex = 18;
             // 
-            // textBox6
+            // textBox_PhoneNumber
             // 
-            this.textBox6.Location = new System.Drawing.Point(6, 71);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(149, 20);
-            this.textBox6.TabIndex = 17;
+            this.textBox_PhoneNumber.Location = new System.Drawing.Point(6, 71);
+            this.textBox_PhoneNumber.Name = "textBox_PhoneNumber";
+            this.textBox_PhoneNumber.Size = new System.Drawing.Size(149, 20);
+            this.textBox_PhoneNumber.TabIndex = 17;
             // 
             // label9
             // 
@@ -182,12 +182,12 @@
             this.label8.TabIndex = 15;
             this.label8.Text = "Zipcode";
             // 
-            // textBox5
+            // textBox_Zipcode
             // 
-            this.textBox5.Location = new System.Drawing.Point(278, 192);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 14;
+            this.textBox_Zipcode.Location = new System.Drawing.Point(278, 192);
+            this.textBox_Zipcode.Name = "textBox_Zipcode";
+            this.textBox_Zipcode.Size = new System.Drawing.Size(100, 20);
+            this.textBox_Zipcode.TabIndex = 14;
             // 
             // label7
             // 
@@ -198,20 +198,20 @@
             this.label7.TabIndex = 13;
             this.label7.Text = "State";
             // 
-            // comboBox3
+            // comboBox_State
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(207, 192);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(65, 21);
-            this.comboBox3.TabIndex = 12;
+            this.comboBox_State.FormattingEnabled = true;
+            this.comboBox_State.Location = new System.Drawing.Point(207, 192);
+            this.comboBox_State.Name = "comboBox_State";
+            this.comboBox_State.Size = new System.Drawing.Size(65, 21);
+            this.comboBox_State.TabIndex = 12;
             // 
-            // textBox4
+            // textBox_City
             // 
-            this.textBox4.Location = new System.Drawing.Point(6, 192);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(195, 20);
-            this.textBox4.TabIndex = 11;
+            this.textBox_City.Location = new System.Drawing.Point(6, 192);
+            this.textBox_City.Name = "textBox_City";
+            this.textBox_City.Size = new System.Drawing.Size(195, 20);
+            this.textBox_City.TabIndex = 11;
             // 
             // label6
             // 
@@ -231,20 +231,20 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Address";
             // 
-            // textBox3
+            // textBox_Address
             // 
-            this.textBox3.Location = new System.Drawing.Point(6, 153);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(372, 20);
-            this.textBox3.TabIndex = 8;
+            this.textBox_Address.Location = new System.Drawing.Point(6, 153);
+            this.textBox_Address.Name = "textBox_Address";
+            this.textBox_Address.Size = new System.Drawing.Size(372, 20);
+            this.textBox_Address.TabIndex = 8;
             // 
-            // comboBox2
+            // comboBox_Potentual
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(133, 113);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 7;
+            this.comboBox_Potentual.FormattingEnabled = true;
+            this.comboBox_Potentual.Location = new System.Drawing.Point(133, 113);
+            this.comboBox_Potentual.Name = "comboBox_Potentual";
+            this.comboBox_Potentual.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_Potentual.TabIndex = 7;
             // 
             // label4
             // 
@@ -264,27 +264,27 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Status";
             // 
-            // comboBox1
+            // comboBox_Status
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(6, 113);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 4;
+            this.comboBox_Status.FormattingEnabled = true;
+            this.comboBox_Status.Location = new System.Drawing.Point(6, 113);
+            this.comboBox_Status.Name = "comboBox_Status";
+            this.comboBox_Status.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_Status.TabIndex = 4;
             // 
-            // textBox2
+            // textBox_LastName
             // 
-            this.textBox2.Location = new System.Drawing.Point(161, 32);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(217, 20);
-            this.textBox2.TabIndex = 3;
+            this.textBox_LastName.Location = new System.Drawing.Point(161, 32);
+            this.textBox_LastName.Name = "textBox_LastName";
+            this.textBox_LastName.Size = new System.Drawing.Size(217, 20);
+            this.textBox_LastName.TabIndex = 3;
             // 
-            // textBox1
+            // textBox_FirstName
             // 
-            this.textBox1.Location = new System.Drawing.Point(6, 32);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(149, 20);
-            this.textBox1.TabIndex = 2;
+            this.textBox_FirstName.Location = new System.Drawing.Point(6, 32);
+            this.textBox_FirstName.Name = "textBox_FirstName";
+            this.textBox_FirstName.Size = new System.Drawing.Size(149, 20);
+            this.textBox_FirstName.TabIndex = 2;
             // 
             // groupBox2
             // 
@@ -307,6 +307,7 @@
             this.columnHeader_FirstName,
             this.columnHeader_LastName,
             this.columnHeader_ContactID});
+            this.listView_CustomerList.FullRowSelect = true;
             this.listView_CustomerList.GridLines = true;
             this.listView_CustomerList.Location = new System.Drawing.Point(6, 68);
             this.listView_CustomerList.Name = "listView_CustomerList";
@@ -314,7 +315,7 @@
             this.listView_CustomerList.TabIndex = 5;
             this.listView_CustomerList.UseCompatibleStateImageBehavior = false;
             this.listView_CustomerList.View = System.Windows.Forms.View.Details;
-            this.listView_CustomerList.SelectedIndexChanged += new System.EventHandler(this.listView_CustomerList_SelectedIndexChanged);
+            this.listView_CustomerList.DoubleClick += new System.EventHandler(this.listView_CustomerList_DoubleClick);
             // 
             // columnHeader_FirstName
             // 
@@ -325,6 +326,11 @@
             // 
             this.columnHeader_LastName.Text = "Last Name";
             this.columnHeader_LastName.Width = 102;
+            // 
+            // columnHeader_ContactID
+            // 
+            this.columnHeader_ContactID.Text = "ID";
+            this.columnHeader_ContactID.Width = 0;
             // 
             // radioButton_Both
             // 
@@ -453,11 +459,6 @@
             this.button_OpenContact.UseVisualStyleBackColor = true;
             this.button_OpenContact.Click += new System.EventHandler(this.button_OpenContact_Click);
             // 
-            // columnHeader_ContactID
-            // 
-            this.columnHeader_ContactID.Text = "ID";
-            this.columnHeader_ContactID.Width = 0;
-            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -496,33 +497,33 @@
         private System.Windows.Forms.RadioButton radioButton_First;
         private System.Windows.Forms.Button button_Search;
         private System.Windows.Forms.TextBox textBox_Search;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBox_Potentual;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox comboBox_Status;
+        private System.Windows.Forms.TextBox textBox_LastName;
+        private System.Windows.Forms.TextBox textBox_FirstName;
         private System.Windows.Forms.Button button_NewNote;
         private System.Windows.Forms.Button button_NewContact;
         private System.Windows.Forms.Button button_Close;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox_Zipcode;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.ComboBox comboBox_State;
+        private System.Windows.Forms.TextBox textBox_City;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox_Address;
         private System.Windows.Forms.ListView listView_NoteList;
         private System.Windows.Forms.ColumnHeader columnHeader_Title;
         private System.Windows.Forms.ColumnHeader columnHeader_Date;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox textBox_StatusDate;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.ComboBox comboBox_PhoneType;
+        private System.Windows.Forms.TextBox textBox_PhoneNumber;
         private System.Windows.Forms.Button button_OpenContact;
         private System.Windows.Forms.ColumnHeader columnHeader_ID;
         private System.Windows.Forms.ColumnHeader columnHeader_ContactID;
