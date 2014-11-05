@@ -11,7 +11,7 @@ namespace ContactNotes
 {
     public partial class Form_Main : Form
     {
-        Contact currentContact;
+        Contact currentContact = new Contact();
         ContactManager currentContactManager = new ContactManager();
         NoteManager currentNoteManager = new NoteManager();
 
@@ -51,10 +51,25 @@ namespace ContactNotes
 
         }
 
-        private void listView_CustomerList_SelectedIndexChanged(object sender, EventArgs e)
+        private void listView_CustomerList_DoubleClick(object sender, EventArgs e)
         {
+            ListView.SelectedListViewItemCollection selection = listView_CustomerList.SelectedItems;
+            string FirstName = selection[0].SubItems[0].Text;
+            string LastName = selection[0].SubItems[1].Text;
+            string ContactID = selection[0].SubItems[2].Text;
+
+            currentContact.ContactID = Convert.ToInt32(ContactID);
+            currentContact.Load();
+
+            DisplayContact();
+
             currentNoteManager.GetNoteList();
             currentNoteManager.PopulateNoteList(listView_NoteList);
+        }
+
+        public void DisplayContact()
+        {
+
         }
     }
 }
