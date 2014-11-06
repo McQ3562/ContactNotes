@@ -7,6 +7,9 @@ namespace ContactNotes
 {
     class Contact
     {
+        AddressManager addressManager = new AddressManager();
+        PhoneManager phoneManager = new PhoneManager();
+
         int contactID;
 	    string firstName;
 	    string lastName;
@@ -51,39 +54,46 @@ namespace ContactNotes
 
             if (results.Count > 0)
             {
-                    contactID = Convert.ToInt32(results[0][1]);
-                    FirstName=results[1][1];
-                    LastName=results[2][1];
-                    Gender=results[3][1];
+                contactID = Convert.ToInt32(results[0][1]);
+                FirstName=results[1][1];
+                LastName=results[2][1];
+                Gender=results[3][1];
 
-                    BirthDate=Convert.ToDateTime(results[4][1]);
+                BirthDate=Convert.ToDateTime(results[4][1]);
 
-                    Status = results[5][1];
-                    Potentual = results[6][1];
+                Status = results[5][1];
+                Potentual = results[6][1];
 
-                    if (results[5][1] == "Y")
-                        VirtualParty = true;
-                    //VirtualParty=results[5][1];
-                    VirtualPartyWho=results[6][1];
+                if (results[5][1] == "Y")
+                    VirtualParty = true;
+                //VirtualParty=results[5][1];
+                VirtualPartyWho=results[6][1];
 
-                    if (results[7][1] == "Y")
-                        inPerson = true;
-                    //InPerson=results[7][1];
-                    InPersonWho=results[8][1];
+                if (results[7][1] == "Y")
+                    inPerson = true;
+                //InPerson=results[7][1];
+                InPersonWho=results[8][1];
 
-                    if (results[9][1] == "Y")
-                        Referal = true;
-                    //Referal=results[9][1];
-                    ReferalWho=results[10][1];
+                if (results[9][1] == "Y")
+                    Referal = true;
+                //Referal=results[9][1];
+                ReferalWho=results[10][1];
 
-                    if (results[11][1] == "Y")
-                        DirectSalesWebsite = true;
-                    //DirectSalesWebsite=results[11][1];
+                if (results[11][1] == "Y")
+                    DirectSalesWebsite = true;
+                //DirectSalesWebsite=results[11][1];
 
-                    if (results[12][1] == "Y")
-                        Other = true;
-                    //Other=results[12][1];
-                    OtherWhere = results[13][1];
+                if (results[12][1] == "Y")
+                    Other = true;
+                //Other=results[12][1];
+                OtherWhere = results[13][1];
+
+                addressManager.ContactID = contactID.ToString();
+                addressManager.LoadList();
+
+                phoneManager.ContactID = contactID.ToString();
+                phoneManager.LoadList();
+
             }
         }
 

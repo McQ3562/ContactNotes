@@ -45,10 +45,15 @@ namespace ContactNotes
 
         private void Form_Main_Load(object sender, EventArgs e)
         {
+            try
+            {
             currentContactManager.GetContactList();
             currentContactManager.PopulateContactList(listView_CustomerList);
-
-
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message + "/n" + err.InnerException + "/n" + err.StackTrace);
+            }
         }
 
         private void listView_CustomerList_DoubleClick(object sender, EventArgs e)
@@ -69,6 +74,17 @@ namespace ContactNotes
 
         public void DisplayContact()
         {
+            textBox_FirstName.Text = currentContact.FirstName;
+            textBox_LastName.Text = currentContact.LastName;
+            //textBox_Phone.Text = currentContact.
+            //comboBox_PhoneType.Text = currentContact
+            comboBox_Status.Text = currentContact.Status;
+            comboBox_Potentual.Text = currentContact.Potentual;
+            //textBox_StatusDate.Text = currentContact
+            //textBox_Address.Text = currentContact
+            //textBox_City.Text = currentContact
+            //comboBox_State.Text = currentContact
+            //textBox_Zipcode.Text = currentContact
 
         }
     }

@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Address.cs" />
+    <Compile Include="AddressManager.cs" />
     <Compile Include="Contact.cs" />
     <Compile Include="ContactManager.cs" />
     <Compile Include="DB_Connection.cs" />
@@ -70,6 +72,8 @@
     </Compile>
     <Compile Include="Note.cs" />
     <Compile Include="NoteManager.cs" />
+    <Compile Include="Phone.cs" />
+    <Compile Include="PhoneManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form_Contact.resx">

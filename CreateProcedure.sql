@@ -85,6 +85,7 @@ CREATE PROCEDURE sp_ADD_Address
 	,@ContactCity VARCHAR(100)
 	,@ContactState VARCHAR(100)
 	,@ContactZip VARCHAR(100)
+	,@IsPrimary CHAR(1) = 'N'
 AS
 INSERT INTO ContactAddress (ContactID, ContactAddress, ContactCity, ContactState, ContactZip)
 VALUES (@ContactID, @ContactAddress, @ContactCity, @ContactState, @ContactZip)
@@ -97,7 +98,8 @@ GO
 CREATE PROCEDURE sp_ADD_Phone
 	@ContactID INT,
 	@ContactPhoneNumber VARCHAR(20),
-	@ContactPhoneTypeID INT
+	@ContactPhoneTypeID INT,
+	@IsPrimary CHAR(1) = 'N'
 AS
 INSERT INTO ContactPhone (ContactID, ContactPhoneNumber, ContactPhoneTypeID)
 VALUES (@ContactID, @ContactPhoneNumber, @ContactPhoneTypeID)
@@ -180,10 +182,57 @@ CREATE PROCEDURE sp_GET_ContactID_List
 AS
 SELECT 
 	ContactID
-	--,NoteTitle
-	--,Note
-	--,NoteCreated
-	--,NoteEdited
 FROM Contacts
 WHERE IsActive = 'Active'
+GO
+IF(EXISTS(SELECT 1 FROM sys.procedures WHERE name='sp_GET_AddressID_List'))
+	DROP PROCEDURE sp_GET_AddressID_List
+GO
+CREATE PROCEDURE sp_GET_AddressID_List
+	@ContactID INT
+AS
+SELECT 
+	ContactAddressID
+FROM ContactAddress
+WHERE ContactID = @ContactID
+GO
+IF(EXISTS(SELECT 1 FROM sys.procedures WHERE name='sp_GET_Address'))
+	DROP PROCEDURE sp_GET_Address
+GO
+CREATE PROCEDURE sp_GET_Address
+	@ContactAddressID INT
+AS
+SELECT 
+	ContactAddress,
+	ContactCity,
+	ContactState,
+	ContactZip,
+	IsPrimary
+FROM ContactAddress
+WHERE ContactAddressID = @ContactAddressID
+GO
+IF(EXISTS(SELECT 1 FROM sys.procedures WHERE name='sp_GET_PhoneID_List'))
+	DROP PROCEDURE sp_GET_PhoneID_List
+GO
+CREATE PROCEDURE sp_GET_PhoneID_List
+	@ContactID INT
+AS
+SELECT 
+	ContactPhoneID
+FROM ContactPhone
+WHERE ContactID = @ContactID
+GO
+IF(EXISTS(SELECT 1 FROM sys.procedures WHERE name='sp_GET_Phone'))
+	DROP PROCEDURE sp_GET_Phone
+GO
+CREATE PROCEDURE sp_GET_Phone
+	@ContactPhoneID INT
+AS
+SELECT 
+	ContactID,
+	ContactPhoneNumber,
+	ContactPhoneTypeID,
+	IsPrimary
+FROM ContactPhone
+WHERE ContactPhoneID = @ContactPhoneID
 GO

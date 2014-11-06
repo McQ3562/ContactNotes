@@ -307,6 +307,7 @@
             this.columnHeader_FirstName,
             this.columnHeader_LastName,
             this.columnHeader_ContactID});
+            this.listView_CustomerList.FullRowSelect = true;
             this.listView_CustomerList.GridLines = true;
             this.listView_CustomerList.Location = new System.Drawing.Point(6, 68);
             this.listView_CustomerList.Name = "listView_CustomerList";

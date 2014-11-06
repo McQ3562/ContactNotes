@@ -47,6 +47,7 @@ CREATE TABLE ContactAddress (
 	ContactCity VARCHAR(100),
 	ContactState VARCHAR(100),
 	ContactZip VARCHAR(100),
+	IsPrimary CHAR(1)
 )
 GO
 IF(EXISTS(SELECT 1 FROM sys.tables WHERE name='ContactPhone'))
@@ -57,6 +58,7 @@ CREATE TABLE ContactPhone (
 	ContactID INT,
 	ContactPhoneNumber VARCHAR(20),
 	ContactPhoneTypeID INT,
+	IsPrimary CHAR(1)
 )
 GO
 IF(EXISTS(SELECT 1 FROM sys.tables WHERE name='lk_PhoneType'))
