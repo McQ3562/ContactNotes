@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ContactNotes
 {
-    class Contact
+    public class Contact
     {
         AddressManager addressManager = new AddressManager();
         PhoneManager phoneManager = new PhoneManager();
@@ -17,6 +17,7 @@ namespace ContactNotes
 	    DateTime birthDate;
         string status;
         string potentual;
+        DateTime statusUpdateDate;
 	    bool virtualParty = false;
 	    string virtualPartyWho;
 	    bool inPerson = false;
@@ -35,6 +36,7 @@ namespace ContactNotes
         public DateTime BirthDate { get { return birthDate; } set { birthDate = value; } }
         public string Status { get{return status;} set {status = value;} }
         public string Potentual { get { return potentual; } set { potentual = value; } }
+        public DateTime StatusUpdateDate { get { return statusUpdateDate; } set { statusUpdateDate = value; } }
         bool VirtualParty { get { return virtualParty; } set { virtualParty = value; } }
         public string VirtualPartyWho { get { return virtualPartyWho; } set { virtualPartyWho = value; } }
         bool InPerson { get { return inPerson; } set { inPerson = value; } }
@@ -44,7 +46,9 @@ namespace ContactNotes
         bool DirectSalesWebsite { get { return directSalesWebsite; } set { directSalesWebsite = value; } }
         bool Other { get { return other; } set { other = value; } }
         public string OtherWhere { get { return otherWhere; } set { otherWhere = value; } }
-        bool IsActive { get { return isActive; } set { isActive = value; } }
+        public bool IsActive { get { return isActive; } set { isActive = value; } }
+        public AddressManager ContactAddressManager { get { return addressManager; } set { addressManager = value; } }
+        public PhoneManager ContactPhoneManager { get { return phoneManager; } set { phoneManager = value; } }
 
         public void Load()
         {
@@ -63,30 +67,27 @@ namespace ContactNotes
 
                 Status = results[5][1];
                 Potentual = results[6][1];
+                StatusUpdateDate = Convert.ToDateTime(results[7][1]);
 
-                if (results[5][1] == "Y")
+                if (results[8][1] == "Y")
                     VirtualParty = true;
-                //VirtualParty=results[5][1];
-                VirtualPartyWho=results[6][1];
+                VirtualPartyWho=results[9][1];
 
-                if (results[7][1] == "Y")
+                if (results[10][1] == "Y")
                     inPerson = true;
-                //InPerson=results[7][1];
-                InPersonWho=results[8][1];
-
-                if (results[9][1] == "Y")
-                    Referal = true;
-                //Referal=results[9][1];
-                ReferalWho=results[10][1];
-
-                if (results[11][1] == "Y")
-                    DirectSalesWebsite = true;
-                //DirectSalesWebsite=results[11][1];
+                InPersonWho=results[11][1];
 
                 if (results[12][1] == "Y")
+                    Referal = true;
+                ReferalWho=results[13][1];
+
+                if (results[14][1] == "Y")
+                    DirectSalesWebsite = true;
+
+                if (results[15][1] == "Y")
                     Other = true;
-                //Other=results[12][1];
-                OtherWhere = results[13][1];
+
+                OtherWhere = results[16][1];
 
                 addressManager.ContactID = contactID.ToString();
                 addressManager.LoadList();

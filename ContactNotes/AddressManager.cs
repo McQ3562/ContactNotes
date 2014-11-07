@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ContactNotes
 {
-    class AddressManager
+    public class AddressManager
     {
         string contactID;
         List<Address> addressList = new List<Address>();
@@ -29,6 +29,22 @@ namespace ContactNotes
                     addressList.Add(tmpAddress);
                 }
             }
+        }
+
+        public Address GetPrimaryAddress()
+        {
+            Address primaryAddress = new Address();
+
+            foreach (Address tmpAddress in addressList)
+            {
+                if(tmpAddress.IsPrimary == "Y")
+                {
+                    primaryAddress = tmpAddress;
+                    break;
+                }
+            }
+
+            return primaryAddress;
         }
     }
 }

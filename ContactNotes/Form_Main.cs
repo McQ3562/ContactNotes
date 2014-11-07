@@ -11,7 +11,7 @@ namespace ContactNotes
 {
     public partial class Form_Main : Form
     {
-        Contact currentContact = new Contact();
+        public Contact currentContact = new Contact();
         ContactManager currentContactManager = new ContactManager();
         NoteManager currentNoteManager = new NoteManager();
 
@@ -40,6 +40,7 @@ namespace ContactNotes
         private void button_OpenContact_Click(object sender, EventArgs e)
         {
             Form_Contact tmpContact = new Form_Contact();
+            tmpContact.CurrentContact = currentContact;
             tmpContact.ShowDialog();
         }
 
@@ -68,7 +69,8 @@ namespace ContactNotes
 
             DisplayContact();
 
-            currentNoteManager.GetNoteList();
+            listView_NoteList.Items.Clear();
+            currentNoteManager.GetNoteList(ContactID);
             currentNoteManager.PopulateNoteList(listView_NoteList);
         }
 
@@ -76,16 +78,19 @@ namespace ContactNotes
         {
             textBox_FirstName.Text = currentContact.FirstName;
             textBox_LastName.Text = currentContact.LastName;
-            //textBox_Phone.Text = currentContact.
-            //comboBox_PhoneType.Text = currentContact
             comboBox_Status.Text = currentContact.Status;
             comboBox_Potentual.Text = currentContact.Potentual;
-            //textBox_StatusDate.Text = currentContact
-            //textBox_Address.Text = currentContact
-            //textBox_City.Text = currentContact
-            //comboBox_State.Text = currentContact
-            //textBox_Zipcode.Text = currentContact
+            textBox_StatusDate.Text = currentContact.StatusUpdateDate.ToString();
 
+            Phone primaryPhone = currentContact.ContactPhoneManager.GetPrimaryPhone();
+            textBox_Phone.Text = primaryPhone.ContactPhoneNumber;
+            comboBox_PhoneType.Text = primaryPhone.ContactPhoneTypeID;
+
+            Address primaryAddress = currentContact.ContactAddressManager.GetPrimaryAddress();
+            textBox_Address.Text = primaryAddress.AddressLineOne;
+            textBox_City.Text = primaryAddress.City;
+            comboBox_State.Text = primaryAddress.State;
+            textBox_Zipcode.Text = primaryAddress.Zipcode;
         }
     }
 }

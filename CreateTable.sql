@@ -25,6 +25,7 @@ CREATE TABLE Contacts (
 	BirthDate DATETIME,
 	StatusID VARCHAR(50),
 	PotentualID VARCHAR(50),
+	StatusUpdateDate DATETIME DEFAULT(GETDATE()),
 	VirtualParty VARCHAR(1),
 	VirtualPartyWho VARCHAR(100),
 	InPerson VARCHAR(1),

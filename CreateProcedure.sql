@@ -39,6 +39,7 @@ IF(EXISTS(SELECT 1 FROM sys.procedures WHERE name='sp_GET_NoteID_List'))
 	DROP PROCEDURE sp_GET_NoteID_List
 GO
 CREATE PROCEDURE sp_GET_NoteID_List
+	@ContactID INT
 AS
 SELECT 
 	NoteID
@@ -48,6 +49,8 @@ SELECT
 	--,NoteEdited
 FROM Notes
 WHERE IsActive = 'Active'
+AND
+ContactID = @ContactID
 GO
 IF(EXISTS(SELECT 1 FROM sys.procedures WHERE name='sp_ADD_Contact'))
 	DROP PROCEDURE sp_ADD_Contact
@@ -87,8 +90,8 @@ CREATE PROCEDURE sp_ADD_Address
 	,@ContactZip VARCHAR(100)
 	,@IsPrimary CHAR(1) = 'N'
 AS
-INSERT INTO ContactAddress (ContactID, ContactAddress, ContactCity, ContactState, ContactZip)
-VALUES (@ContactID, @ContactAddress, @ContactCity, @ContactState, @ContactZip)
+INSERT INTO ContactAddress (ContactID, ContactAddress, ContactCity, ContactState, ContactZip, IsPrimary)
+VALUES (@ContactID, @ContactAddress, @ContactCity, @ContactState, @ContactZip, @IsPrimary)
 
 SELECT SCOPE_IDENTITY()
 GO
@@ -101,8 +104,8 @@ CREATE PROCEDURE sp_ADD_Phone
 	@ContactPhoneTypeID INT,
 	@IsPrimary CHAR(1) = 'N'
 AS
-INSERT INTO ContactPhone (ContactID, ContactPhoneNumber, ContactPhoneTypeID)
-VALUES (@ContactID, @ContactPhoneNumber, @ContactPhoneTypeID)
+INSERT INTO ContactPhone (ContactID, ContactPhoneNumber, ContactPhoneTypeID, IsPrimary)
+VALUES (@ContactID, @ContactPhoneNumber, @ContactPhoneTypeID, @IsPrimary)
 
 SELECT SCOPE_IDENTITY()
 GO
@@ -120,6 +123,7 @@ SELECT
 	BirthDate,
 	StatusID,
 	PotentualID,
+	StatusUpdateDate,
 	VirtualParty,
 	VirtualPartyWho,
 	InPerson,

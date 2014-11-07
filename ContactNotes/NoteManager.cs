@@ -6,23 +6,28 @@ using System.Windows.Forms;
 
 namespace ContactNotes
 {
-    class NoteManager
+    public class NoteManager
     {
-        List<Note> NoteList = new List<Note>();
+        List<Note> NoteList;
 
-        public void GetNoteList()
+        public void GetNoteList(string ContactID)
         {
+            NoteList = new List<Note>();
+
             List<List<string>> results;
             DB_Connection conn = new DB_Connection(DB_ConnectionString.GetContactNotesConnectionString());
-            results = conn.ReturnQuery("sp_GET_NoteID_List");
+            results = conn.ReturnQuery("sp_GET_NoteID_List @ContactID="+ContactID);
 
-            for (int counter = 1; counter < results[0].Count; counter++)
+            if (results.Count > 0)
             {
-                Note tmpNote = new Note();
-                tmpNote.NoteID = Convert.ToInt32(results[0][counter]);
-                tmpNote.Load();
+                for (int counter = 1; counter < results[0].Count; counter++)
+                {
+                    Note tmpNote = new Note();
+                    tmpNote.NoteID = Convert.ToInt32(results[0][counter]);
+                    tmpNote.Load();
 
-                NoteList.Add(tmpNote);
+                    NoteList.Add(tmpNote);
+                }
             }
         }
 

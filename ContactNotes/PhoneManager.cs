@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ContactNotes
 {
-    class PhoneManager
+    public class PhoneManager
     {
         List<Phone> PhoneList = new List<Phone>();
 
@@ -29,6 +29,22 @@ namespace ContactNotes
                     PhoneList.Add(tmpPhone);
                 }
             }
+        }
+
+        public Phone GetPrimaryPhone()
+        {
+            Phone primaryPhone = new Phone();
+
+            foreach(Phone tempPhone in PhoneList)
+            {
+                if (tempPhone.IsPrimary == "Y")
+                {
+                    primaryPhone = tempPhone;
+                    break;
+                }
+            }
+
+            return primaryPhone;
         }
     }
 }
