@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace ContactNotes
 {
-    class ContactManager
+    public class ContactManager
     {
         List<Contact> contactList = new List<Contact>();
 

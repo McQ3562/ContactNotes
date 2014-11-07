@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ContactNotes
 {
-    class Note
+    public class Note
     {
         int noteID;
         string noteTitle;

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ContactNotes
 {
-    class Address
+    public class Address
     {
         string addressID;
         string addressLineOne;
