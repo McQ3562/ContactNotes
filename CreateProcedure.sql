@@ -62,6 +62,7 @@ CREATE PROCEDURE sp_ADD_Contact
 	@BirthDate DATETIME,
 	@StatusID VARCHAR(50),
 	@PotentualID VARCHAR(50),
+	@EmailAddress VARCHAR(1000),
 	@VirtualParty VARCHAR(1),
 	@VirtualPartyWho VARCHAR(100),
 	@InPerson VARCHAR(1),
@@ -77,7 +78,11 @@ AS
 INSERT INTO Contacts (FirstName, LastName, Gender, BirthDate, StatusID, PotentualID, VirtualParty, VirtualPartyWho, InPerson, InPersonWho, Referal, ReferalWho, DirectSalesWebsite, Other, OtherWhere, IsActive)
 VALUES(@FirstName, @LastName, @Gender, @BirthDate, @StatusID, @PotentualID, @VirtualParty, @VirtualPartyWho, @InPerson, @InPersonWho, @Referal, @ReferalWho, @DirectSalesWebsite, @Other, @OtherWhere, @IsActive)
 
-SELECT SCOPE_IDENTITY()
+DECLARE @ContactID INT;
+SET @ContactID = SCOPE_IDENTITY()
+
+INSERT INTO EmailAddress (EmailAddress, ContactID)
+VALUES (@EmailAddress, @ContactID)
 GO
 IF(EXISTS(SELECT 1 FROM sys.procedures WHERE name='sp_ADD_Address'))
 	DROP PROCEDURE sp_ADD_Address
@@ -116,7 +121,7 @@ CREATE PROCEDURE sp_GET_Contact
 	@ContactID INT
 AS
 SELECT 
-	ContactID,
+	C.ContactID,
 	FirstName,
 	LastName,
 	Gender,
@@ -124,6 +129,7 @@ SELECT
 	StatusID,
 	PotentualID,
 	StatusUpdateDate,
+	EA.EmailAddress,
 	VirtualParty,
 	VirtualPartyWho,
 	InPerson,
@@ -132,9 +138,62 @@ SELECT
 	ReferalWho,
 	DirectSalesWebsite,
 	Other,
-	OtherWhere
-FROM Contacts
-WHERE ContactID=@ContactID
+	OtherWhere,
+	IsActive
+FROM 
+Contacts C
+	LEFT JOIN
+EmailAddress EA
+		ON C.ContactID=EA.ContactID
+WHERE C.ContactID=@ContactID
+GO
+IF(EXISTS(SELECT 1 FROM sys.procedures WHERE name='sp_SET_Contact'))
+	DROP PROCEDURE sp_SET_Contact
+GO
+CREATE PROCEDURE sp_SET_Contact
+	@ContactID VARCHAR(50),
+	@FirstName VARCHAR(500),
+	@LastName VARCHAR(500),
+	@Gender VARCHAR(10),
+	@BirthDate DATETIME,
+	@StatusID VARCHAR(50),
+	@PotentualID VARCHAR(50),
+	@EmailAddress VARCHAR(1000),
+	@VirtualParty VARCHAR(1),
+	@VirtualPartyWho VARCHAR(100),
+	@InPerson VARCHAR(1),
+	@InPersonWho VARCHAR(100),
+	@Referal VARCHAR(1),
+	@ReferalWho VARCHAR(100),
+	@DirectSalesWebsite VARCHAR(1),
+	@Other VARCHAR(1),
+	@OtherWhere VARCHAR(100),
+	@IsActive VARCHAR(10)
+AS
+	UPDATE Contacts 
+	SET FirstName = @FirstName
+	,LastName = @LastName
+	,Gender = @Gender
+	,BirthDate=@BirthDate
+	,StatusID=@StatusID
+	,PotentualID=@PotentualID
+	,VirtualParty=@VirtualParty
+	,VirtualPartyWho=@VirtualPartyWho
+	,InPerson=@InPerson
+	,InPersonWho=@InPersonWho
+	,Referal=@Referal
+	,ReferalWho=@ReferalWho
+	,DirectSalesWebsite=@DirectSalesWebsite
+	,Other=@Other
+	,OtherWhere=@OtherWhere
+	,IsActive=@IsActive
+	WHERE ContactID = @ContactID
+	
+	UPDATE EmailAddress
+	SET EmailAddress=@EmailAddress
+	WHERE ContactID=@ContactID
+	AND
+	EmailAddressType = 'Primary'
 GO
 IF(EXISTS(SELECT 1 FROM sys.procedures WHERE name='sp_GET_Contact_List'))
 	DROP PROCEDURE sp_GET_Contact_List

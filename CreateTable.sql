@@ -62,19 +62,31 @@ CREATE TABLE ContactPhone (
 	IsPrimary CHAR(1)
 )
 GO
+IF(EXISTS(SELECT 1 FROM sys.tables WHERE name='EmailAddress'))
+	DROP TABLE EmailAddress
+GO
+CREATE TABLE EmailAddress (
+	EmailAddressID INT IDENTITY(1,1) PRIMARY KEY,
+	ContactID INT,
+	EmailAddressType VARCHAR(50),
+	EmailAddress VARCHAR(1000)
+)
+GO
 IF(EXISTS(SELECT 1 FROM sys.tables WHERE name='lk_PhoneType'))
 	DROP TABLE lk_PhoneType
 GO
 CREATE TABLE lk_PhoneType (
-	PhoneTypeID INT,
-	PhoneTypeName VARCHAR(50)
+	PhoneTypeID INT IDENTITY(1,1) PRIMARY KEY,
+	PhoneTypeName VARCHAR(50),
+	PhoneTypeDiscription VARCHAR(500)
 )
 GO
 IF(EXISTS(SELECT 1 FROM sys.tables WHERE name='lk_Status'))
 	DROP TABLE lk_Status
 GO
 CREATE TABLE lk_Status (
-	StatusID VARCHAR(50),
+	StatusID INT IDENTITY(1,1) PRIMARY KEY,
+	StatusName VARCHAR(100),
 	StatusDiscription VARCHAR(500)
 )
 GO
@@ -82,24 +94,39 @@ IF(EXISTS(SELECT 1 FROM sys.tables WHERE name='lk_Potentual'))
 	DROP TABLE lk_Potentual
 GO
 CREATE TABLE lk_Potentual (
-	PotentualID VARCHAR(50),
+	PotentualID INT IDENTITY(1,1) PRIMARY KEY,
+	PotentualName VARCHAR(100),
 	PotentualDiscription VARCHAR(500)
 )
+GO
+IF(EXISTS(SELECT 1 FROM sys.tables WHERE name='lk_EmailType'))
+	DROP TABLE lk_EmailType
+GO
+CREATE TABLE lk_EmailType (
+	EmailTypeID INT IDENTITY(1,1) PRIMARY KEY,
+	EmailTypeName VARCHAR(100),
+	EmailTypeDiscription VARCHAR(500)
+)
 
-INSERT INTO lk_PhoneType (PhoneTypeID, PhoneTypeName) VALUES (1, 'Cell')
-INSERT INTO lk_PhoneType (PhoneTypeID, PhoneTypeName) VALUES (2, 'Home')
-INSERT INTO lk_PhoneType (PhoneTypeID, PhoneTypeName) VALUES (3, 'Office')
-INSERT INTO lk_PhoneType (PhoneTypeID, PhoneTypeName) VALUES (4, 'Other')
+INSERT INTO lk_PhoneType (PhoneTypeName, PhoneTypeDiscription) VALUES ('Cell', '')
+INSERT INTO lk_PhoneType (PhoneTypeName, PhoneTypeDiscription) VALUES ('Home', '')
+INSERT INTO lk_PhoneType (PhoneTypeName, PhoneTypeDiscription) VALUES ('Office', '')
+INSERT INTO lk_PhoneType (PhoneTypeName, PhoneTypeDiscription) VALUES ('Other', '')
 
-INSERT INTO lk_Status (StatusID, StatusDiscription) VALUES ('Prospect', '')
-INSERT INTO lk_Status (StatusID, StatusDiscription) VALUES ('Customer', '')
-INSERT INTO lk_Status (StatusID, StatusDiscription) VALUES ('Host', '')
-INSERT INTO lk_Status (StatusID, StatusDiscription) VALUES ('Presenter', '')
-INSERT INTO lk_Status (StatusID, StatusDiscription) VALUES ('Customer / Host', '')
-INSERT INTO lk_Status (StatusID, StatusDiscription) VALUES ('Customer / Presenter', '')
-INSERT INTO lk_Status (StatusID, StatusDiscription) VALUES ('Host / Presenter', '')
+INSERT INTO lk_Status (StatusName, StatusDiscription) VALUES ('Prospect', '')
+INSERT INTO lk_Status (StatusName, StatusDiscription) VALUES ('Customer', '')
+INSERT INTO lk_Status (StatusName, StatusDiscription) VALUES ('Host', '')
+INSERT INTO lk_Status (StatusName, StatusDiscription) VALUES ('Presenter', '')
+INSERT INTO lk_Status (StatusName, StatusDiscription) VALUES ('Customer / Host', '')
+INSERT INTO lk_Status (StatusName, StatusDiscription) VALUES ('Customer / Presenter', '')
+INSERT INTO lk_Status (StatusName, StatusDiscription) VALUES ('Host / Presenter', '')
 
-INSERT INTO lk_Potentual (PotentualID, PotentualDiscription) VALUES ('Yes', '')
-INSERT INTO lk_Potentual (PotentualID, PotentualDiscription) VALUES ('Maybe', '')
-INSERT INTO lk_Potentual (PotentualID, PotentualDiscription) VALUES ('No', '')
+INSERT INTO lk_Potentual (PotentualName, PotentualDiscription) VALUES ('Yes', '')
+INSERT INTO lk_Potentual (PotentualName, PotentualDiscription) VALUES ('Maybe', '')
+INSERT INTO lk_Potentual (PotentualName, PotentualDiscription) VALUES ('No', '')
+
+INSERT INTO lk_EmailType (EmailTypeName, EmailTypeDiscription) VALUES ('Primary', '')
+INSERT INTO lk_EmailType (EmailTypeName, EmailTypeDiscription) VALUES ('Personal', '')
+INSERT INTO lk_EmailType (EmailTypeName, EmailTypeDiscription) VALUES ('Business', '')
+INSERT INTO lk_EmailType (EmailTypeName, EmailTypeDiscription) VALUES ('Other', '')
 GO

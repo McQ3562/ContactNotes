@@ -42,14 +42,20 @@ namespace ContactNotes
             Form_Contact tmpContact = new Form_Contact();
             tmpContact.CurrentContact = currentContact;
             tmpContact.ShowDialog();
+
+            listView_CustomerList.Items.Clear();
+            currentContactManager.GetContactList();
+            currentContactManager.PopulateContactList(listView_CustomerList);
         }
 
         private void Form_Main_Load(object sender, EventArgs e)
         {
             try
             {
-            currentContactManager.GetContactList();
-            currentContactManager.PopulateContactList(listView_CustomerList);
+                currentContactManager.GetContactList();
+                currentContactManager.PopulateContactList(listView_CustomerList);
+
+                
             }
             catch (Exception err)
             {

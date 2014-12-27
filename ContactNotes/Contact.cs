@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace ContactNotes
 {
@@ -18,6 +19,8 @@ namespace ContactNotes
         string status;
         string potentual;
         DateTime statusUpdateDate;
+        string emailAddress;
+        string emailAddressType;
 	    bool virtualParty = false;
 	    string virtualPartyWho;
 	    bool inPerson = false;
@@ -26,6 +29,7 @@ namespace ContactNotes
 	    string referalWho;
 	    bool directSalesWebsite = false;
 	    bool other = false;
+
 	    string otherWhere;
 	    bool isActive;
 
@@ -37,14 +41,16 @@ namespace ContactNotes
         public string Status { get{return status;} set {status = value;} }
         public string Potentual { get { return potentual; } set { potentual = value; } }
         public DateTime StatusUpdateDate { get { return statusUpdateDate; } set { statusUpdateDate = value; } }
-        bool VirtualParty { get { return virtualParty; } set { virtualParty = value; } }
+        public string EmailAddress { get { return emailAddress; } set { emailAddress = value; } }
+        public string EmailAddressType { get { return emailAddressType; } set { emailAddressType = value; } }
+        public bool VirtualParty { get { return virtualParty; } set { virtualParty = value; } }
         public string VirtualPartyWho { get { return virtualPartyWho; } set { virtualPartyWho = value; } }
-        bool InPerson { get { return inPerson; } set { inPerson = value; } }
+        public bool InPerson { get { return inPerson; } set { inPerson = value; } }
         public string InPersonWho { get { return inPersonWho; } set { inPersonWho = value; } }
-        bool Referal { get { return referal; } set { referal = value; } }
+        public bool Referal { get { return referal; } set { referal = value; } }
         public string ReferalWho { get { return referalWho; } set { referalWho = value; } }
-        bool DirectSalesWebsite { get { return directSalesWebsite; } set { directSalesWebsite = value; } }
-        bool Other { get { return other; } set { other = value; } }
+        public bool DirectSalesWebsite { get { return directSalesWebsite; } set { directSalesWebsite = value; } }
+        public bool Other { get { return other; } set { other = value; } }
         public string OtherWhere { get { return otherWhere; } set { otherWhere = value; } }
         public bool IsActive { get { return isActive; } set { isActive = value; } }
         public AddressManager ContactAddressManager { get { return addressManager; } set { addressManager = value; } }
@@ -61,33 +67,44 @@ namespace ContactNotes
                 contactID = Convert.ToInt32(results[0][1]);
                 FirstName=results[1][1];
                 LastName=results[2][1];
-                Gender=results[3][1];
+
+                string tmpGender = results[3][1];
+                if (tmpGender == "M")
+                    Gender = "Male";
+                else if(tmpGender=="F")
+                    Gender = "Female";
 
                 BirthDate=Convert.ToDateTime(results[4][1]);
 
                 Status = results[5][1];
                 Potentual = results[6][1];
                 StatusUpdateDate = Convert.ToDateTime(results[7][1]);
+                EmailAddress = results[8][1];
 
-                if (results[8][1] == "Y")
+                if (results[9][1] == "Y")
                     VirtualParty = true;
-                VirtualPartyWho=results[9][1];
+                VirtualPartyWho=results[10][1];
 
-                if (results[10][1] == "Y")
+                if (results[11][1] == "Y")
                     inPerson = true;
-                InPersonWho=results[11][1];
+                InPersonWho=results[12][1];
 
-                if (results[12][1] == "Y")
+                if (results[13][1] == "Y")
                     Referal = true;
-                ReferalWho=results[13][1];
-
-                if (results[14][1] == "Y")
-                    DirectSalesWebsite = true;
+                ReferalWho=results[14][1];
 
                 if (results[15][1] == "Y")
+                    DirectSalesWebsite = true;
+
+                if (results[16][1] == "Y")
                     Other = true;
 
-                OtherWhere = results[16][1];
+                OtherWhere = results[17][1];
+
+                if (results[18][1] == "Active")
+                    IsActive = true;
+                else
+                    IsActive = false;
 
                 addressManager.ContactID = contactID.ToString();
                 addressManager.LoadList();
@@ -98,6 +115,82 @@ namespace ContactNotes
             }
         }
 
+        public void Save()
+        {
+            string translatedIsActive;
+            if(IsActive==true)
+            {
+                translatedIsActive = "Active";
+            }
+            else
+            {
+                translatedIsActive = "InActive";
+            }
 
+            string translatedGender;
+            if (Gender == "Male")
+                translatedGender = "M";
+            else
+                translatedGender = "F";
+
+            DB_Connection conn = new DB_Connection(DB_ConnectionString.GetContactNotesConnectionString());
+            string SQL = @"sp_SET_Contact 
+	                    @ContactID={17},
+                        @FirstName='{0}',
+	                    @LastName='{1}',
+	                    @Gender='{2}',
+	                    @BirthDate='{3}',
+	                    @StatusID='{4}',
+	                    @PotentualID='{5}',
+	                    @EmailAddress='{6}',
+	                    @VirtualParty='{7}',
+	                    @VirtualPartyWho='{8}',
+	                    @InPerson='{9}',
+	                    @InPersonWho='{10}',
+	                    @Referal='{11}',
+	                    @ReferalWho='{12}',
+	                    @DirectSalesWebsite='{13}',
+	                    @Other='{14}',
+	                    @OtherWhere='{15}',
+	                    @IsActive='{16}'";
+            SQL = String.Format(SQL, FirstName, LastName, translatedGender, BirthDate, Status, Potentual, EmailAddress, VirtualParty, VirtualPartyWho, InPerson, inPersonWho, Referal, ReferalWho, DirectSalesWebsite, Other, OtherWhere, translatedIsActive, ContactID);
+            conn.ReturnQuery(SQL);
+        }
+    }
+
+    public class Gender
+    {
+        string genderID;
+        string genderName;
+
+        public string GenderID { get { return genderID; } set { genderID = value; } }
+        public string GenderName { get { return genderName; } set { genderName = value; } }
+
+        public static List<Gender> LoadList()
+        {
+            List<Gender> returnList = new List<ContactNotes.Gender>();
+
+            Gender tmpGender = new Gender();
+            tmpGender.GenderID = "M";
+            tmpGender.GenderName = "Male";
+
+            returnList.Add(tmpGender);
+
+            tmpGender = new Gender();
+            tmpGender.GenderID = "F";
+            tmpGender.GenderName = "Female";
+
+            returnList.Add(tmpGender);
+
+            return returnList;
+        }
+
+        public static void ComboBox_LoadGender(ComboBox ComboBoxGender)
+        {
+            List<Gender> genderList = ContactNotes.Gender.LoadList();
+            ComboBoxGender.DataSource = genderList;
+            ComboBoxGender.ValueMember = "genderID";
+            ComboBoxGender.DisplayMember = "genderName";
+        }
     }
 }

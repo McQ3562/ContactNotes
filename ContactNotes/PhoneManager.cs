@@ -20,7 +20,7 @@ namespace ContactNotes
 
             if (results.Count > 0)
             {
-                for (int counter = 1; counter < results[0].Count-1; counter++)
+                for (int counter = 1; counter < results[0].Count; counter++)
                 {
                     Phone tmpPhone = new Phone();
                     tmpPhone.ContactPhoneID = results[0][counter];

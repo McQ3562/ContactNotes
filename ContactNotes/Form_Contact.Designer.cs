@@ -73,6 +73,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.textBox_StatusDate = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
+            this.checkBox_IsActive = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // textBox_FirstName
@@ -395,6 +396,7 @@
             this.button_Clear.TabIndex = 37;
             this.button_Clear.Text = "Clear";
             this.button_Clear.UseVisualStyleBackColor = true;
+            this.button_Clear.Click += new System.EventHandler(this.button_Clear_Click);
             // 
             // button_Save
             // 
@@ -404,6 +406,7 @@
             this.button_Save.TabIndex = 38;
             this.button_Save.Text = "Save";
             this.button_Save.UseVisualStyleBackColor = true;
+            this.button_Save.Click += new System.EventHandler(this.button_Save_Click);
             // 
             // comboBox_Status
             // 
@@ -455,11 +458,22 @@
             this.label19.TabIndex = 44;
             this.label19.Text = "Status Date";
             // 
+            // checkBox_IsActive
+            // 
+            this.checkBox_IsActive.AutoSize = true;
+            this.checkBox_IsActive.Location = new System.Drawing.Point(12, 411);
+            this.checkBox_IsActive.Name = "checkBox_IsActive";
+            this.checkBox_IsActive.Size = new System.Drawing.Size(67, 17);
+            this.checkBox_IsActive.TabIndex = 45;
+            this.checkBox_IsActive.Text = "Is Active";
+            this.checkBox_IsActive.UseVisualStyleBackColor = true;
+            // 
             // Form_Contact
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(363, 449);
+            this.Controls.Add(this.checkBox_IsActive);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.textBox_StatusDate);
             this.Controls.Add(this.label18);
@@ -560,5 +574,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox textBox_StatusDate;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.CheckBox checkBox_IsActive;
     }
 }
