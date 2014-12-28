@@ -416,6 +416,7 @@
             this.columnHeader_Title,
             this.columnHeader_Date,
             this.columnHeader_ID});
+            this.listView_NoteList.FullRowSelect = true;
             this.listView_NoteList.GridLines = true;
             this.listView_NoteList.Location = new System.Drawing.Point(6, 19);
             this.listView_NoteList.Name = "listView_NoteList";
@@ -423,6 +424,7 @@
             this.listView_NoteList.TabIndex = 7;
             this.listView_NoteList.UseCompatibleStateImageBehavior = false;
             this.listView_NoteList.View = System.Windows.Forms.View.Details;
+            this.listView_NoteList.DoubleClick += new System.EventHandler(this.listView_NoteList_DoubleClick);
             // 
             // columnHeader_Title
             // 

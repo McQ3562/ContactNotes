@@ -28,10 +28,10 @@ namespace ContactNotes
         private void Form_Contact_Load(object sender, EventArgs e)
         {
             Gender.ComboBox_LoadGender(comboBox_Gender);
-            //LoadStatus();
-            //LoadPotentual();
-            //LoadState();
-            //LoadPhoneType();
+            Status.LoadComboBox(comboBox_Status);
+            Potentual.LoadComboBox(comboBox_Potentual);
+            State.LoadComboBox(comboBox_State);
+            PhoneType.LoadComboBox(comboBox_PhoneType);
 
             DisplayContact();
         }

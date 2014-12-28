@@ -193,4 +193,143 @@ namespace ContactNotes
             ComboBoxGender.DisplayMember = "genderName";
         }
     }
+
+    public class Status
+    {
+        string statusID;
+        string statusName;
+        string statusDiscription;
+
+        public string StatusID { get { return statusID; } set { statusID = value; } }
+        public string StatusName { get { return statusName; } set { statusName = value; } }
+        public string StatusDiscription { get { return statusDiscription; } set { statusDiscription = value; } }
+
+        public void Load(string StatusID)
+        {
+            List<List<string>> results;
+            DB_Connection conn = new DB_Connection(DB_ConnectionString.GetContactNotesConnectionString());
+            results = conn.ReturnQuery("sp_GET_Status @StatusID="+StatusID);
+
+            if(results[0].Count>0)
+            {
+                StatusID = results[0][1];
+                StatusName = results[1][1];
+                StatusDiscription = results[2][1];
+            }
+        }
+
+        public static List<Status> LoadListStatus()
+        {
+            List<List<string>> results;
+            List<Status> tmpStatusList = new List<Status>();
+            DB_Connection conn = new DB_Connection(DB_ConnectionString.GetContactNotesConnectionString());
+            results = conn.ReturnQuery("sp_GET_StatusList");
+
+            if(results[0].Count > 0)
+            {
+                for(int counter=1;counter<results[0].Count;counter++)
+                {
+                    Status tmpStatus = new Status();
+                    tmpStatus.Load(results[0][counter]);
+
+                    tmpStatusList.Add(tmpStatus);
+                }
+            }
+
+            return tmpStatusList;
+        }
+
+        public static void LoadComboBox(ComboBox LoadComboBoxStatus)
+        {
+            List<Status> tmpStatusList = Status.LoadListStatus();
+            LoadComboBoxStatus.DataSource = tmpStatusList;
+            LoadComboBoxStatus.DisplayMember = "StatusName";
+            LoadComboBoxStatus.ValueMember = "StatusID";
+        }
+    }
+
+    public class Potentual
+    {
+        string potentualID;
+        string potentualName;
+        string potentualDiscription;
+
+        public string PotentualID { get { return potentualID; } set { potentualID = value; } }
+        public string PotentualName { get { return potentualName; } set { potentualName = value; } }
+        public string PotentualDiscription { get { return potentualDiscription; } set { potentualDiscription = value; } }
+
+        public static List<Potentual> LoadList()
+        {
+            List<Potentual> returnList = new List<Potentual>();
+            List<List<string>> results;
+            DB_Connection conn = new DB_Connection(DB_ConnectionString.GetContactNotesConnectionString());
+            results = conn.ReturnQuery("sp_GET_PotenutalList");
+
+            if(results.Count>0)
+            {
+                for (int counter = 1; counter < results[0].Count; counter++)
+                {
+                    Potentual tmpPotentual = new Potentual();
+                    tmpPotentual.PotentualID = results[0][counter];
+                    tmpPotentual.PotentualName = results[1][counter];
+                    tmpPotentual.PotentualDiscription = results[2][counter];
+
+                    returnList.Add(tmpPotentual);
+                }
+            }
+
+            return returnList;
+        }
+
+        public static void LoadComboBox(ComboBox ComboBoxToLoad)
+        {
+            List<Potentual> tmpPotentualList = Potentual.LoadList();
+            ComboBoxToLoad.DataSource = tmpPotentualList;
+            ComboBoxToLoad.ValueMember = "potentualID";
+            ComboBoxToLoad.DisplayMember = "potentualName";
+        }
+    }
+
+    public class State
+    {
+        string stateID;
+        string stateName;
+        string stateAbbr;
+
+        public string StateID { get { return stateID; } set { stateID = value; } }
+        public string StateName { get { return stateName; } set { stateName = value; } }
+        public string StateAbbr { get { return stateAbbr; } set { stateAbbr = value; } }
+
+        public static List<State> LoadList()
+        {
+            List<State> returnList = new List<State>();
+            List<List<string>> results;
+            DB_Connection conn = new DB_Connection(DB_ConnectionString.GetContactNotesConnectionString());
+            results = conn.ReturnQuery("sp_GET_StateList");
+
+            if(results.Count > 0)
+            {
+                for (int counter = 1; counter < results[0].Count; counter++)
+                {
+                    State tmpState = new State();
+                    tmpState.StateID = results[0][counter];
+                    tmpState.StateName = results[1][counter];
+                    tmpState.StateAbbr = results[2][counter];
+
+                    returnList.Add(tmpState);
+                }
+            }
+
+            return returnList;
+        }
+
+        public static void LoadComboBox(ComboBox comboBoxToLoad)
+        {
+            List<State> listState = State.LoadList();
+            comboBoxToLoad.DataSource = listState;
+            comboBoxToLoad.ValueMember = "stateID";
+            comboBoxToLoad.DisplayMember = "stateAbbr";
+            
+        }
+    }
 }

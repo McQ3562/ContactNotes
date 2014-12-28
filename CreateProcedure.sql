@@ -41,12 +41,7 @@ GO
 CREATE PROCEDURE sp_GET_NoteID_List
 	@ContactID INT
 AS
-SELECT 
-	NoteID
-	--,NoteTitle
-	--,Note
-	--,NoteCreated
-	--,NoteEdited
+SELECT NoteID
 FROM Notes
 WHERE IsActive = 'Active'
 AND
@@ -298,4 +293,62 @@ SELECT
 	IsPrimary
 FROM ContactPhone
 WHERE ContactPhoneID = @ContactPhoneID
+GO
+IF(EXISTS(SELECT 1 FROM sys.procedures WHERE name='sp_GET_PhoneTypeList'))
+	DROP PROCEDURE sp_GET_PhoneTypeList
+GO
+CREATE PROCEDURE sp_GET_PhoneTypeList
+AS
+SELECT PhoneTypeID
+FROM lk_PhoneType
+GO
+IF(EXISTS(SELECT 1 FROM sys.procedures WHERE name='sp_GET_PhoneType'))
+	DROP PROCEDURE sp_GET_PhoneType
+GO
+CREATE PROCEDURE sp_GET_PhoneType
+	@PhoneTypeID INT
+AS
+SELECT 
+	PhoneTypeID
+	,PhoneTypeName
+	,PhoneTypeDiscription
+FROM dbo.lk_PhoneType
+WHERE PhoneTypeID = @PhoneTypeID
+GO
+IF(EXISTS(SELECT 1 FROM sys.procedures WHERE name='sp_GET_Status'))
+	DROP PROCEDURE sp_GET_Status
+GO
+CREATE PROCEDURE sp_GET_Status
+	@StatusID INT
+AS
+SELECT 
+	StatusID
+	,StatusName
+	,StatusDiscription
+FROM lk_Status
+WHERE StatusID=@StatusID
+GO
+IF(EXISTS(SELECT 1 FROM sys.procedures WHERE name='sp_GET_StatusList'))
+	DROP PROCEDURE sp_GET_StatusList
+GO
+CREATE PROCEDURE sp_GET_StatusList
+AS
+SELECT StatusID
+FROM lk_Status
+GO
+IF(EXISTS(SELECT 1 FROM sys.procedures WHERE name='sp_GET_StateList'))
+	DROP PROCEDURE sp_GET_StateList
+GO
+CREATE PROCEDURE sp_GET_StateList
+AS
+SELECT StateID, StateName, StateAbbreviation
+FROM lk_State
+GO
+IF(EXISTS(SELECT 1 FROM sys.procedures WHERE name='sp_GET_PotenutalList'))
+	DROP PROCEDURE sp_GET_PotenutalList
+GO
+CREATE PROCEDURE sp_GET_PotenutalList
+AS
+SELECT PotentualID, PotentualName, PotentualDiscription
+FROM dbo.lk_Potentual
 GO

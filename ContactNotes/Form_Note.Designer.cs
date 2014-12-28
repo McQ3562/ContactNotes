@@ -32,6 +32,7 @@
             this.listView_Note = new System.Windows.Forms.ListView();
             this.columnHeader_Title = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader_NoteDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
             this.textBox_Note = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -39,7 +40,10 @@
             this.button_Save = new System.Windows.Forms.Button();
             this.button_Clear = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.columnHeader_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox_LastEditDate = new System.Windows.Forms.TextBox();
+            this.textBox_CreateDate = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // textBox_NoteTitle
@@ -55,6 +59,7 @@
             this.columnHeader_Title,
             this.columnHeader_NoteDate,
             this.columnHeader_ID});
+            this.listView_Note.FullRowSelect = true;
             this.listView_Note.GridLines = true;
             this.listView_Note.Location = new System.Drawing.Point(272, 25);
             this.listView_Note.Name = "listView_Note";
@@ -62,15 +67,22 @@
             this.listView_Note.TabIndex = 1;
             this.listView_Note.UseCompatibleStateImageBehavior = false;
             this.listView_Note.View = System.Windows.Forms.View.Details;
+            this.listView_Note.DoubleClick += new System.EventHandler(this.listView_Note_DoubleClick);
             // 
             // columnHeader_Title
             // 
             this.columnHeader_Title.Text = "Title";
-            this.columnHeader_Title.Width = 192;
+            this.columnHeader_Title.Width = 184;
             // 
             // columnHeader_NoteDate
             // 
             this.columnHeader_NoteDate.Text = "Date";
+            this.columnHeader_NoteDate.Width = 69;
+            // 
+            // columnHeader_ID
+            // 
+            this.columnHeader_ID.Text = "ID";
+            this.columnHeader_ID.Width = 0;
             // 
             // label1
             // 
@@ -100,7 +112,7 @@
             // 
             // button_Close
             // 
-            this.button_Close.Location = new System.Drawing.Point(454, 476);
+            this.button_Close.Location = new System.Drawing.Point(454, 487);
             this.button_Close.Name = "button_Close";
             this.button_Close.Size = new System.Drawing.Size(75, 23);
             this.button_Close.TabIndex = 5;
@@ -110,7 +122,7 @@
             // 
             // button_Save
             // 
-            this.button_Save.Location = new System.Drawing.Point(292, 476);
+            this.button_Save.Location = new System.Drawing.Point(292, 487);
             this.button_Save.Name = "button_Save";
             this.button_Save.Size = new System.Drawing.Size(75, 23);
             this.button_Save.TabIndex = 6;
@@ -120,7 +132,7 @@
             // 
             // button_Clear
             // 
-            this.button_Clear.Location = new System.Drawing.Point(373, 476);
+            this.button_Clear.Location = new System.Drawing.Point(373, 487);
             this.button_Clear.Name = "button_Clear";
             this.button_Clear.Size = new System.Drawing.Size(75, 23);
             this.button_Clear.TabIndex = 7;
@@ -137,16 +149,47 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "Note List";
             // 
-            // columnHeader_ID
+            // label4
             // 
-            this.columnHeader_ID.Text = "ID";
-            this.columnHeader_ID.Width = 0;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 473);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(74, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Last Edit Date";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(142, 473);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(64, 13);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Create Date";
+            // 
+            // textBox_LastEditDate
+            // 
+            this.textBox_LastEditDate.Location = new System.Drawing.Point(12, 489);
+            this.textBox_LastEditDate.Name = "textBox_LastEditDate";
+            this.textBox_LastEditDate.Size = new System.Drawing.Size(127, 20);
+            this.textBox_LastEditDate.TabIndex = 11;
+            // 
+            // textBox_CreateDate
+            // 
+            this.textBox_CreateDate.Location = new System.Drawing.Point(145, 489);
+            this.textBox_CreateDate.Name = "textBox_CreateDate";
+            this.textBox_CreateDate.Size = new System.Drawing.Size(121, 20);
+            this.textBox_CreateDate.TabIndex = 12;
             // 
             // Form_Note
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(541, 511);
+            this.ClientSize = new System.Drawing.Size(541, 523);
+            this.Controls.Add(this.textBox_CreateDate);
+            this.Controls.Add(this.textBox_LastEditDate);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button_Clear);
             this.Controls.Add(this.button_Save);
@@ -178,5 +221,9 @@
         private System.Windows.Forms.Button button_Clear;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ColumnHeader columnHeader_ID;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox_LastEditDate;
+        private System.Windows.Forms.TextBox textBox_CreateDate;
     }
 }

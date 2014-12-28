@@ -34,6 +34,7 @@ namespace ContactNotes
         private void button_NewNote_Click(object sender, EventArgs e)
         {
             Form_Note tmpNote = new Form_Note();
+            tmpNote.ContactID = currentContact.ContactID;
             tmpNote.ShowDialog();
         }
 
@@ -55,7 +56,10 @@ namespace ContactNotes
                 currentContactManager.GetContactList();
                 currentContactManager.PopulateContactList(listView_CustomerList);
 
-                
+                PhoneType.LoadComboBox(comboBox_PhoneType);
+                Status.LoadComboBox(comboBox_Status);
+                Potentual.LoadComboBox(comboBox_Potentual);
+                State.LoadComboBox(comboBox_State);
             }
             catch (Exception err)
             {
@@ -75,9 +79,20 @@ namespace ContactNotes
 
             DisplayContact();
 
+            //Display Notes
             listView_NoteList.Items.Clear();
             currentNoteManager.GetNoteList(ContactID);
             currentNoteManager.PopulateNoteList(listView_NoteList);
+        }
+
+        private void listView_NoteList_DoubleClick(object sender, EventArgs e)
+        {
+            ListViewItem selectedItem = listView_NoteList.SelectedItems[0];
+            Form_Note FN = new Form_Note();
+            FN.ContactID = currentContact.ContactID;
+            FN.NoteID = selectedItem.SubItems[2].Text;
+
+            FN.ShowDialog();
         }
 
         public void DisplayContact()

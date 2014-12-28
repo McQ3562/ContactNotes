@@ -8,10 +8,12 @@ namespace ContactNotes
 {
     public class ContactManager
     {
-        List<Contact> contactList = new List<Contact>();
+        List<Contact> contactList;
 
         public void GetContactList()
         {
+            contactList = new List<Contact>();
+
             List<List<string>> results;
             DB_Connection conn = new DB_Connection(DB_ConnectionString.GetContactNotesConnectionString());
             results = conn.ReturnQuery("sp_GET_ContactID_List");
@@ -40,5 +42,7 @@ namespace ContactNotes
                 currentListView.Items.Add(tmpItem);
             }
         }
+
+        //public void 
     }
 }
