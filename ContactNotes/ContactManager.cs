@@ -43,6 +43,30 @@ namespace ContactNotes
             }
         }
 
-        //public void 
+        public void PopulateContactListWithFilter(ListView currentListView, string FilterString, string SearchField)
+        {
+            bool foundFlag;
+
+            currentListView.Items.Clear();
+
+            foreach (Contact tmpContact in contactList)
+            {
+                foundFlag = false;
+                if(((SearchField == "First") || (SearchField == "Both")) && (tmpContact.FirstName.IndexOf(FilterString)>-1))
+                    foundFlag = true;
+
+                if (((SearchField == "Last") || (SearchField == "Both")) && (tmpContact.LastName.IndexOf(FilterString) > -1))
+                    foundFlag = true;
+
+                if(foundFlag == true)
+                {
+                    ListViewItem tmpItem = new ListViewItem(tmpContact.FirstName);
+                    tmpItem.SubItems.Add(tmpContact.LastName);
+                    tmpItem.SubItems.Add(tmpContact.ContactID.ToString());
+
+                    currentListView.Items.Add(tmpItem);
+                }
+            }
+        }
     }
 }

@@ -113,5 +113,19 @@ namespace ContactNotes
             comboBox_State.Text = primaryAddress.State;
             textBox_Zipcode.Text = primaryAddress.Zipcode;
         }
+
+        private void button_Search_Click(object sender, EventArgs e)
+        {
+            string searchField;
+            if (radioButton_First.Checked == true)
+                searchField = "First";
+            else if (radioButton_Last.Checked == true)
+                searchField = "Last";
+            else
+                searchField = "Bolth";
+
+            currentContactManager.PopulateContactListWithFilter(listView_CustomerList, textBox_Search.Text, searchField);
+
+        }
     }
 }

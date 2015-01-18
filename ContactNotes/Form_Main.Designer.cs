@@ -372,6 +372,7 @@
             this.button_Search.TabIndex = 1;
             this.button_Search.Text = "Search";
             this.button_Search.UseVisualStyleBackColor = true;
+            this.button_Search.Click += new System.EventHandler(this.button_Search_Click);
             // 
             // textBox_Search
             // 
