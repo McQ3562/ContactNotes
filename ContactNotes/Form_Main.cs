@@ -69,6 +69,8 @@ namespace ContactNotes
 
         private void listView_CustomerList_DoubleClick(object sender, EventArgs e)
         {
+            button_NewNote.Enabled = true;
+
             ListView.SelectedListViewItemCollection selection = listView_CustomerList.SelectedItems;
             string FirstName = selection[0].SubItems[0].Text;
             string LastName = selection[0].SubItems[1].Text;

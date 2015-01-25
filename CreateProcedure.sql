@@ -5,17 +5,29 @@ IF(EXISTS(SELECT 1 FROM sys.procedures WHERE name='sp_ADD_Note'))
 GO
 CREATE PROCEDURE sp_ADD_Note
 	@ContactID AS INT,
+	@NoteID AS INT = NULL,
 	@NoteTilte AS VARCHAR(1000),
-	@Note AS VARCHAR(MAX)
+	@Note AS VARCHAR(MAX),
+	@IsActive AS VARCHAR(10)
 AS
 DECLARE @CurrentDate DATETIME
 SET @CurrentDate = GETDATE()
 
-INSERT INTO Notes (ContactID, NoteTitle, Note, IsActive, NoteCreated, NoteEdited)
-VALUES (@ContactID, @NoteTilte, @Note, 'Active', @CurrentDate, @CurrentDate)
+IF(EXISTS(SELECT @NoteID FROM Notes WHERE NoteID=@NoteID))
+BEGIN
+	UPDATE Notes 
+	SET NoteTitle=@NoteTilte, 
+	Note=@Note,
+	IsActive=@IsActive
+	WHERE NoteID=@NoteID
+END
+ELSE
+BEGIN
+	INSERT INTO Notes (ContactID, NoteTitle, Note, IsActive, NoteCreated, NoteEdited)
+	VALUES (@ContactID, @NoteTilte, @Note, 'Active', @CurrentDate, @CurrentDate)
 
-SELECT @@IDENTITY;
-
+	SELECT @@IDENTITY;
+END
 GO
 
 IF(EXISTS(SELECT 1 FROM sys.procedures WHERE name='sp_GET_Note'))

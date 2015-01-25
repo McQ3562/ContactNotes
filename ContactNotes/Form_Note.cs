@@ -13,7 +13,7 @@ namespace ContactNotes
     {
         int contactID;
         string noteID;
-        Note currentNote;
+        Note currentNote = new Note();
 
         public int ContactID { get { return contactID; } set { contactID = value; } }
         public string NoteID { get { return noteID; } set { noteID = value; } }
@@ -32,15 +32,20 @@ namespace ContactNotes
         {
             textBox_NoteTitle.Text = "";
             textBox_Note.Text = "";
-            textBox_CreateDate.Text = "";
-            textBox_LastEditDate.Text = "";
+            dateTimePicker_LastEdit.Text = "";
+            dateTimePicker_CreateDate.Text = "";
 
             currentNote = new Note();
         }
 
         private void button_Save_Click(object sender, EventArgs e)
         {
+            currentNote.NoteTitle = textBox_NoteTitle.Text;
+            currentNote.NoteText = textBox_Note.Text;
+            currentNote.NoteCreated = dateTimePicker_CreateDate.Value;
+            currentNote.NoteEdited = dateTimePicker_LastEdit.Value;
 
+            currentNote.Save();
         }
 
         private void Form_Note_Load(object sender, EventArgs e)
@@ -67,8 +72,8 @@ namespace ContactNotes
 
             textBox_NoteTitle.Text = tmpNote.NoteTitle;
             textBox_Note.Text = tmpNote.NoteText;
-            textBox_CreateDate.Text = tmpNote.NoteCreated.ToShortDateString();
-            textBox_LastEditDate.Text = tmpNote.NoteEdited.ToShortDateString();
+            dateTimePicker_CreateDate.Value = tmpNote.NoteCreated;
+            dateTimePicker_LastEdit.Value = tmpNote.NoteEdited;
         }
     }
 }

@@ -42,8 +42,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox_LastEditDate = new System.Windows.Forms.TextBox();
-            this.textBox_CreateDate = new System.Windows.Forms.TextBox();
+            this.dateTimePicker_LastEdit = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker_CreateDate = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // textBox_NoteTitle
@@ -167,27 +167,29 @@
             this.label5.TabIndex = 10;
             this.label5.Text = "Create Date";
             // 
-            // textBox_LastEditDate
+            // dateTimePicker_LastEdit
             // 
-            this.textBox_LastEditDate.Location = new System.Drawing.Point(12, 489);
-            this.textBox_LastEditDate.Name = "textBox_LastEditDate";
-            this.textBox_LastEditDate.Size = new System.Drawing.Size(127, 20);
-            this.textBox_LastEditDate.TabIndex = 11;
+            this.dateTimePicker_LastEdit.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker_LastEdit.Location = new System.Drawing.Point(12, 491);
+            this.dateTimePicker_LastEdit.Name = "dateTimePicker_LastEdit";
+            this.dateTimePicker_LastEdit.Size = new System.Drawing.Size(118, 20);
+            this.dateTimePicker_LastEdit.TabIndex = 11;
             // 
-            // textBox_CreateDate
+            // dateTimePicker_CreateDate
             // 
-            this.textBox_CreateDate.Location = new System.Drawing.Point(145, 489);
-            this.textBox_CreateDate.Name = "textBox_CreateDate";
-            this.textBox_CreateDate.Size = new System.Drawing.Size(121, 20);
-            this.textBox_CreateDate.TabIndex = 12;
+            this.dateTimePicker_CreateDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker_CreateDate.Location = new System.Drawing.Point(136, 491);
+            this.dateTimePicker_CreateDate.Name = "dateTimePicker_CreateDate";
+            this.dateTimePicker_CreateDate.Size = new System.Drawing.Size(130, 20);
+            this.dateTimePicker_CreateDate.TabIndex = 12;
             // 
             // Form_Note
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(541, 523);
-            this.Controls.Add(this.textBox_CreateDate);
-            this.Controls.Add(this.textBox_LastEditDate);
+            this.Controls.Add(this.dateTimePicker_CreateDate);
+            this.Controls.Add(this.dateTimePicker_LastEdit);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -223,7 +225,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader_ID;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox_LastEditDate;
-        private System.Windows.Forms.TextBox textBox_CreateDate;
+        private System.Windows.Forms.DateTimePicker dateTimePicker_LastEdit;
+        private System.Windows.Forms.DateTimePicker dateTimePicker_CreateDate;
     }
 }

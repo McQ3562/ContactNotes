@@ -383,6 +383,7 @@
             // 
             // button_NewNote
             // 
+            this.button_NewNote.Enabled = false;
             this.button_NewNote.Location = new System.Drawing.Point(222, 507);
             this.button_NewNote.Name = "button_NewNote";
             this.button_NewNote.Size = new System.Drawing.Size(75, 23);
