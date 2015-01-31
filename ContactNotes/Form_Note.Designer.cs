@@ -44,6 +44,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.dateTimePicker_LastEdit = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker_CreateDate = new System.Windows.Forms.DateTimePicker();
+            this.checkBox_IsActive = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // textBox_NoteTitle
@@ -183,11 +184,22 @@
             this.dateTimePicker_CreateDate.Size = new System.Drawing.Size(130, 20);
             this.dateTimePicker_CreateDate.TabIndex = 12;
             // 
+            // checkBox_IsActive
+            // 
+            this.checkBox_IsActive.AutoSize = true;
+            this.checkBox_IsActive.Location = new System.Drawing.Point(12, 517);
+            this.checkBox_IsActive.Name = "checkBox_IsActive";
+            this.checkBox_IsActive.Size = new System.Drawing.Size(92, 17);
+            this.checkBox_IsActive.TabIndex = 13;
+            this.checkBox_IsActive.Text = "Note is Active";
+            this.checkBox_IsActive.UseVisualStyleBackColor = true;
+            // 
             // Form_Note
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(541, 523);
+            this.ClientSize = new System.Drawing.Size(541, 546);
+            this.Controls.Add(this.checkBox_IsActive);
             this.Controls.Add(this.dateTimePicker_CreateDate);
             this.Controls.Add(this.dateTimePicker_LastEdit);
             this.Controls.Add(this.label5);
@@ -227,5 +239,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dateTimePicker_LastEdit;
         private System.Windows.Forms.DateTimePicker dateTimePicker_CreateDate;
+        private System.Windows.Forms.CheckBox checkBox_IsActive;
     }
 }

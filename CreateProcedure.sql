@@ -6,7 +6,7 @@ GO
 CREATE PROCEDURE sp_ADD_Note
 	@ContactID AS INT,
 	@NoteID AS INT = NULL,
-	@NoteTilte AS VARCHAR(1000),
+	@NoteTitle AS VARCHAR(1000),
 	@Note AS VARCHAR(MAX),
 	@IsActive AS VARCHAR(10)
 AS
@@ -16,7 +16,7 @@ SET @CurrentDate = GETDATE()
 IF(EXISTS(SELECT @NoteID FROM Notes WHERE NoteID=@NoteID))
 BEGIN
 	UPDATE Notes 
-	SET NoteTitle=@NoteTilte, 
+	SET NoteTitle=@NoteTitle, 
 	Note=@Note,
 	IsActive=@IsActive
 	WHERE NoteID=@NoteID
@@ -24,7 +24,7 @@ END
 ELSE
 BEGIN
 	INSERT INTO Notes (ContactID, NoteTitle, Note, IsActive, NoteCreated, NoteEdited)
-	VALUES (@ContactID, @NoteTilte, @Note, 'Active', @CurrentDate, @CurrentDate)
+	VALUES (@ContactID, @NoteTitle, @Note, 'Active', @CurrentDate, @CurrentDate)
 
 	SELECT @@IDENTITY;
 END
@@ -40,7 +40,7 @@ SELECT
 	NoteID,
 	NoteTitle,
 	Note,
-	--IsActive,
+	IsActive,
 	NoteCreated,
 	NoteEdited
 FROM Notes

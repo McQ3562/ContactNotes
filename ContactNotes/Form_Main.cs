@@ -36,6 +36,11 @@ namespace ContactNotes
             Form_Note tmpNote = new Form_Note();
             tmpNote.ContactID = currentContact.ContactID;
             tmpNote.ShowDialog();
+
+            //Display Notes
+            listView_NoteList.Items.Clear();
+            currentNoteManager.GetNoteList(currentContact.ContactID.ToString());
+            currentNoteManager.PopulateNoteList(listView_NoteList);
         }
 
         private void button_OpenContact_Click(object sender, EventArgs e)
@@ -47,6 +52,8 @@ namespace ContactNotes
             listView_CustomerList.Items.Clear();
             currentContactManager.GetContactList();
             currentContactManager.PopulateContactList(listView_CustomerList);
+
+            DisplayContact();
         }
 
         private void Form_Main_Load(object sender, EventArgs e)

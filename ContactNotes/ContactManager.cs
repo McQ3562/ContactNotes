@@ -52,10 +52,10 @@ namespace ContactNotes
             foreach (Contact tmpContact in contactList)
             {
                 foundFlag = false;
-                if(((SearchField == "First") || (SearchField == "Both")) && (tmpContact.FirstName.IndexOf(FilterString)>-1))
+                if(((SearchField == "First") || (SearchField == "Bolth")) && (tmpContact.FirstName.IndexOf(FilterString) > -1))
                     foundFlag = true;
 
-                if (((SearchField == "Last") || (SearchField == "Both")) && (tmpContact.LastName.IndexOf(FilterString) > -1))
+                if (((SearchField == "Last") || (SearchField == "Bolth")) && (tmpContact.LastName.IndexOf(FilterString) > -1))
                     foundFlag = true;
 
                 if(foundFlag == true)

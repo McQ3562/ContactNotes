@@ -45,23 +45,30 @@ namespace ContactNotes
             currentNote.NoteCreated = dateTimePicker_CreateDate.Value;
             currentNote.NoteEdited = dateTimePicker_LastEdit.Value;
 
-            currentNote.Save();
+            currentNote.Save(ContactID);
+
+            Note.LoadListView(listView_Note, ContactID);
         }
 
         private void Form_Note_Load(object sender, EventArgs e)
         {
-            Note.LoadListView(listView_Note, ContactID);
-            
-            if(NoteID != null)
-            {
-                DisplayNote(NoteID);
-            }
+            DisplayNoteList();
         }
 
         private void listView_Note_DoubleClick(object sender, EventArgs e)
         {
             ListViewItem tmpItem = listView_Note.SelectedItems[0];
             DisplayNote(tmpItem.SubItems[2].Text);
+        }
+
+        private void DisplayNoteList()
+        {
+            Note.LoadListView(listView_Note, ContactID);
+
+            if (NoteID != null)
+            {
+                DisplayNote(NoteID);
+            }
         }
 
         private void DisplayNote(string NoteID)

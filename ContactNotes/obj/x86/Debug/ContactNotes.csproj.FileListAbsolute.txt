@@ -8,3 +8,4 @@ C:\Users\McQ\Documents\GitHub\ContactNotes\ContactNotes\obj\x86\Debug\ContactNot
 C:\Users\McQ\Documents\GitHub\ContactNotes\ContactNotes\obj\x86\Debug\ContactNotes.exe
 C:\Users\McQ\Documents\GitHub\ContactNotes\ContactNotes\obj\x86\Debug\ContactNotes.pdb
 C:\Users\McQ\Documents\GitHub\ContactNotes\ContactNotes\bin\Debug\ContactNotes.exe.config
+C:\Users\McQ\Documents\GitHub\ContactNotes\ContactNotes\obj\x86\Debug\ContactNotes.csprojResolveAssemblyReference.cache

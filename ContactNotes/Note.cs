@@ -13,6 +13,7 @@ namespace ContactNotes
         string noteText;
         DateTime noteCreated;
         DateTime noteEdited;
+        string isActive = "Not Active";
 
         public int NoteID
         {
@@ -39,12 +40,28 @@ namespace ContactNotes
             get { return noteEdited; }
             set { noteEdited = value; }
         }
+        public string IsActive
+        {
+            get { return isActive; }
+            set { isActive = value; }
+        }
 
-        public void Save()
+        public void Save(int ContactID)
         {
             List<List<string>> results = new List<List<string>>();
             DB_Connection conn = new DB_Connection(DB_ConnectionString.GetContactNotesConnectionString());
-            results = conn.ReturnQuery("sp_ADD_Note @NoteTitle='"+noteTitle+"' @Note='"+noteText+"'");
+            results = conn.ReturnQuery("sp_ADD_Note @ContactID="+ContactID.ToString()+", @NoteTitle='" + noteTitle + "', @Note='" + noteText + "', @IsActive='"+IsActive+"'");
+            if (results.Count > 0)
+            {
+                if (results[0][0].IndexOf("Error") == -1)
+                {
+
+                }
+                else
+                {
+                    MessageBox.Show("SQL Error: " + results[0][0], "SQL Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                }
+            }
         }
 
         public void Load()
@@ -53,11 +70,23 @@ namespace ContactNotes
             DB_Connection conn = new DB_Connection(DB_ConnectionString.GetContactNotesConnectionString());
             results = conn.ReturnQuery("sp_GET_Note @NoteID=" + noteID);
 
-            noteID = Convert.ToInt32(results[0][1]);
-            noteTitle = results[1][1];
-            noteText = results[2][1];
-            noteCreated = Convert.ToDateTime(results[3][1]);
-            noteEdited = Convert.ToDateTime(results[4][1]);
+            if (results.Count > 0)
+            {
+                if (results[0][0].IndexOf("Error") == -1)
+                {
+                    noteID = Convert.ToInt32(results[0][1]);
+                    noteTitle = results[1][1];
+                    noteText = results[2][1];
+                    isActive = results[3][1];
+                    noteCreated = Convert.ToDateTime(results[4][1]);
+                    noteEdited = Convert.ToDateTime(results[5][1]);
+
+                }
+                else
+                {
+                    MessageBox.Show("SQL Error: " + results[0][0], "SQL Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                }
+            }
         }
 
         public static List<Note> LoadList(int ContactID)
@@ -83,6 +112,8 @@ namespace ContactNotes
 
         public static void LoadListView(ListView ListViewToLoad, int ContactID)
         {
+            ListViewToLoad.Items.Clear();
+
             List<Note> noteList = Note.LoadList(ContactID);
             foreach (Note tmpNote in noteList)
             {
